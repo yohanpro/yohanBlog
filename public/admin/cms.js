@@ -1078,7 +1078,7 @@ window.netlifyIdentity = _netlifyIdentityWidget.default;
 
 var addLoginListener = function addLoginListener() {
   return _netlifyIdentityWidget.default.on("login", function () {
-    document.location.href = "" + "/" + "admin" + "/";
+    document.location.href = "/yohan" + "/" + "admin" + "/";
   });
 };
 
