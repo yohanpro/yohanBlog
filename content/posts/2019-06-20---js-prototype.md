@@ -6,10 +6,10 @@ draft: false
 slug: "/posts/js-prototype/"
 category: "Typography"
 tags:
-  - "Prototype",
-  - "Javscript",
-  - "Web Development",
-  - "프로토타입 체이닝",
+  - "Prototype"
+  - "Javscript"
+  - "Web Development"
+  - "프로토타입 체이닝"
 description: "Javascript는 Prototype 상속 언어이다!"
 ---
 
