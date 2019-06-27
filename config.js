@@ -2,9 +2,8 @@
 
 module.exports = {
   url: "https://lumen.netlify.com",
-  title: "Blog by John Doe",
-  subtitle:
-    "Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.",
+  title: "Blog by Yohan Kim",
+  subtitle: "웹 개발자 김요한입니다.",
   copyright: "© All rights reserved.",
   disqusShortname: "",
   postsPerPage: 4,
