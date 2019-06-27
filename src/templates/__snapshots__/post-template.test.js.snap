@@ -91,7 +91,6 @@ exports[`PostTemplate renders correctly 1`] = `
             <strong>
               Test name
             </strong>
-             on Twitter
           </a>
         </p>
       </div>
