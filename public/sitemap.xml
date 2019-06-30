@@ -10,6 +10,8 @@
 <url> <loc>https://lumen.netlify.com/posts/the-origins-of-social-stationery-lettering</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/pages/contacts/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/posts/the-birth-of-movable-type/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://lumen.netlify.com/posts/네트워크-기초/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://lumen.netlify.com/posts/네트워크란/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/tag/design</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/tag/gatsby</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/tag/handwriting</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -23,10 +25,14 @@
 <url> <loc>https://lumen.netlify.com/tag/prototype</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/tag/typography</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/tag/web-development</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://lumen.netlify.com/tag/network</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://lumen.netlify.com/tag/네트워크</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://lumen.netlify.com/tag/모두의-네트워크</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/tag/프로토타입-체이닝</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/category/design-culture</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/category/design-inspiration</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/category/javascript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://lumen.netlify.com/category/network</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/category/typography</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://lumen.netlify.com/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>

@@ -1,0 +1,28 @@
+.noto {
+    font-family: "Noto Sans KR", sans-serif !important;
+}
+
+.caption {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 100;
+    color: #b6b6b6;
+}
+
+.center {
+    display: block;
+    margin: auto;
+}
+
+.imgBorder--radius {
+    border-radius: 10px;
+}
+
+.color--red {
+    color: red;
+    font-weight: bold;
+}
+
+
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean");
