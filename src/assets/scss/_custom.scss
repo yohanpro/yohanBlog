@@ -7,7 +7,7 @@
     text-align: center;
     margin-top: 1rem;
     font-weight: 100;
-    color: #b6b6b6;
+    color: gray;
 }
 
 .center {
@@ -24,5 +24,6 @@
     font-weight: bold;
 }
 
-
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean");
+p>img {
+    width: 60%;
+}
