@@ -27,12 +27,9 @@ module.exports = {
     photo: "/myPhoto.jpeg",
     bio: "Web Developer 웹개발자 김요한입니다.",
     contacts: {
-      email: "#yohan@yohanpro.com",
-      telegram: "#",
-      twitter: "#",
+      email: "#yohanpro@yohanpro.com",
       github: "#https://github.com/yohanpro",
-      rss: "#",
-      vkontakte: "#"
+      instagram: "#https://www.naver.com"
     }
   }
 };
