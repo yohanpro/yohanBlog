@@ -1,6 +1,6 @@
 ---
 title: Javscript Prototype에 대하여 알아보자. (1)
-date: "2019-06-19"
+date: "2019-06-24"
 template: "post"
 draft: false
 slug: "/posts/js-prototype/"
@@ -64,6 +64,7 @@ personC.myName(); // "Hello my name is Yohan!"
 
 하지만, 당연히 일반적으로 직접 `__proto__`를 써서 상속하지는 않는다. <br>
 두 가지의 방법이 있다.
+
 - 생성자(constructor)로 객체를 생성할 때 생성자의 prototype 프로퍼티에 추가하는 방법
 - Object.create() 메서드로 상속을 받을 프로토 타입을 지정하여 객체를 생성하는 방법
 
@@ -81,22 +82,31 @@ Person.prototype.greet = function(){
 
 const personA = new Person('John','27')`
 ```
+
 ---
+
 1. 빈 객체를 생성한다.
-```js 
-const newObj = {}
+
+```js
+const newObj = {};
 ```
 
 2. `Person.prototype`을 생성된 객체의 프로토타입으로 설정한다.
-```js 
+
+```js
 newObj.__proto__ = Person.prototype;
 ```
-	그런데 이때 만약 Person.prototype이 가리카는 것이 객체가 아니라면 `Object.prototype`을 프로토타입으로 설정한다. <br><br>
-3. **Person**생성자를 실행하고 **newObj**를 초기화한다.<br> 이 때 **this**는 1에서 생성한 객체로 설정한다. 인수는 **new**연산자와 함께 사용한 인수를 그대로 사용한다.  
+
+    그런데 이때 만약 Person.prototype이 가리카는 것이 객체가 아니라면 `Object.prototype`을 프로토타입으로 설정한다. <br><br>
+
+3. **Person**생성자를 실행하고 **newObj**를 초기화한다.<br> 이 때 **this**는 1에서 생성한 객체로 설정한다. 인수는 **new**연산자와 함께 사용한 인수를 그대로 사용한다.
+
 ```js
-Person.apply(newObj,arg);
+Person.apply(newObj, arg);
 ```
+
 4. 완성된 객체를 반환한다.
+
 ```js
 return newObj;
 ```

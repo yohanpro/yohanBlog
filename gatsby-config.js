@@ -13,7 +13,6 @@ module.exports = {
     menu: siteConfig.menu,
     author: siteConfig.author
   },
-  pathPrefix: "yohan",
   plugins: [
     {
       resolve: "gatsby-source-filesystem",
