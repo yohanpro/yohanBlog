@@ -5,8 +5,8 @@ module.exports = {
   title: "Blog by Yohan Kim",
   subtitle: "웹 개발자 김요한입니다.",
   copyright: "© All rights reserved.",
-  disqusShortname: "",
-  postsPerPage: 4,
+  disqusShortname: "www-yohanpro-com",
+  postsPerPage: 5,
   googleAnalyticsId: "UA-140132541-1",
   menu: [
     {
