@@ -6,8 +6,8 @@ draft: false
 slug: "/posts/js/IIFE"
 category: "js"
 tags:
-  - "js",
-  - "javascript",
+  - "js"
+  - "javascript"
   - "IIFE"
   - "즉시실행함수"
 description: "즉시실행함수와 사용이유 그리고 예제"
