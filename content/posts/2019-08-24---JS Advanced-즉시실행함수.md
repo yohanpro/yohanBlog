@@ -101,7 +101,7 @@ createButtons();
 
 <figcaption>버튼을 클릭하면 무슨 일이 일어날까?</figcaption>
 
-위의 코드를 보면 해당 버튼을 클릭할 경우 당연히 "This is Button 클릭한 숫자"를 출력할 것으로 보인다.<br>
+위의 코드를 보면 해당 버튼을 클릭할 경우 "This is Button <span class="color--red">클릭한 숫자</span>"를 출력할 것으로 생각할 수도 있다.<br>
 하지만 실제로 눌러보면 그렇지 않다.
 
 <p class="codepen" data-height="300" data-theme-id="0" data-default-tab="js,result" data-user="yohanpro" data-slug-hash="NWKdVEW" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 0 auto; margin-top:2rem;padding: 1em;" data-pen-title="NWKdVEW">
@@ -113,4 +113,48 @@ createButtons();
 
 모두가 button 6으로 뜬다. 그 이유는 무엇일까?
 
-위에서 i 이터레이션이
+크롬 개발자 도구를 이용하여 디버깅 해보았다.
+<img src="/media/images/js/iife-2.png" alt="image" style="width:80%; height:auto;margin-top:1.5rem;">
+
+위에서 i 이터레이션이 `i<=5`까지이고 `i++`이기 때문에 i=6까지 실행이 된다.<br>
+또한 이터레이션 값이 계속 바뀌기 때문에 `onclick` 메소드에 있는 i 값은 계속 바뀌게 된다. <br>
+
+즉 코드를 올바르게 고치려면 `onclick`메소드에 안에 있는 변수 `i`가 외부 영향을 받지 않게 만들어야 한다.<br>
+그래서 IIFE를 통해 i값을 캡슐화 시켜 독립된 값으로 만드는 것이다. IIFE를 통해 올바르게 고쳐보았다.<br>
+
+```js
+function createButtons() {
+  for (var i = 1; i <= 5; i++) {
+    var body = document.getElementsByTagName("BODY")[0];
+    var button = document.createElement("BUTTON");
+    button.innerHTML = "Button " + i;
+    (function(num) {
+      button.onclick = function() {
+        alert("This is Button " + num); //이제 num은 외부의 i값과 상관없이 항상 고정된 값을 가리킨다.
+      };
+    })(i);
+    body.appendChild(button);
+  }
+}
+```
+
+아니면 이렇게 외부 함수로 빼는 방법이 있다. 사실 이게 더 가독성이 좋다. 더 추천하는 방법이다.
+
+```js
+function createButtons() {
+  for (var i = 1; i <= 5; i++) {
+    var body = document.getElementsByTagName("BODY")[0];
+    var button = document.createElement("BUTTON");
+    button.innerHTML = "Button " + i;
+    addClickFunctions(i, button);
+    body.appendChild(button);
+  }
+}
+function addClickFunctions(num, button) {
+  button.onclick = function() {
+    alert("This is Button " + num);
+  };
+}
+```
+
+t
