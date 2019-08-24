@@ -104,12 +104,12 @@ createButtons();
 위의 코드를 보면 해당 버튼을 클릭할 경우 "This is Button <span class="color--red">클릭한 숫자</span>"를 출력할 것으로 생각할 수도 있다.<br>
 하지만 실제로 눌러보면 그렇지 않다.
 
-<p class="codepen" data-height="300" data-theme-id="0" data-default-tab="js,result" data-user="yohanpro" data-slug-hash="NWKdVEW" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 0 auto; margin-top:2rem;padding: 1em;" data-pen-title="NWKdVEW">
-  <span>See the Pen <a href="https://codepen.io/yohanpro/pen/NWKdVEW/">
-  NWKdVEW</a> by Yohan Kim (<a href="https://codepen.io/yohanpro">@yohanpro</a>)
+<p class="codepen" data-height="265" data-theme-id="0" data-default-tab="js,result" data-user="yohanpro" data-slug-hash="xxKqKwR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: margin:0 auto; padding: 1em;" data-pen-title="button">
+  <span>See the Pen <a href="https://codepen.io/yohanpro/pen/xxKqKwR/">
+  button</a> by Yohan Kim (<a href="https://codepen.io/yohanpro">@yohanpro</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 모두가 button 6으로 뜬다. 그 이유는 무엇일까?
 
@@ -156,5 +156,3 @@ function addClickFunctions(num, button) {
   };
 }
 ```
-
-t

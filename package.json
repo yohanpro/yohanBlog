@@ -40,6 +40,7 @@
     "disqus"
   ],
   "dependencies": {
+    "@weknow/gatsby-remark-codepen": "^0.1.0",
     "bluebird": "^3.5.5",
     "classnames": "^2.2.6",
     "codecov": "^3.5.0",

@@ -190,6 +190,20 @@ module.exports = {
         }
       }
     },
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [
+          {
+            resolve: "@weknow/gatsby-remark-codepen",
+            options: {
+              theme: "dark",
+              height: 400
+            }
+          }
+        ]
+      }
+    },
     "gatsby-plugin-flow"
   ]
 };
