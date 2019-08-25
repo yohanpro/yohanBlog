@@ -62,7 +62,7 @@ div로 hamburger-icon을 만들어 준 후 크기, 위치를 잡아준다.
 하지만 이렇게 만들면 굳이 필요없는 클래스까지 붙여가며 만들어야 한다, 그리고 뽀대가 나지 않지 않은가?<br>
 그래서 나는 가운데 middle만 사용하고 나머지는 <span class="color--red">가상 선택자(pseudo class)</span>로 만들기로 하였다.
 
-https://codepen.io/yohanpro/pen/pMxdgW/
+https://codepen.io/yohanpro/pen/pMxdgW
 
 이제 세 개의 선을 긋는데는 성공했다. <br>
 이제 Javascript를 이용하여 클릭할 시에 X로 변하도록 만들어 주면 된다.<br>
