@@ -111,7 +111,7 @@ createButtons();
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
-https://codepen.io/yohanpro/pen/xxKqKwR/
+https://codepen.io/yohanpro/pen/xxKqKwR
 
 모두가 button 6으로 뜬다. 그 이유는 무엇일까?
 
