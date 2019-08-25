@@ -62,12 +62,7 @@ div로 hamburger-icon을 만들어 준 후 크기, 위치를 잡아준다.
 하지만 이렇게 만들면 굳이 필요없는 클래스까지 붙여가며 만들어야 한다, 그리고 뽀대가 나지 않지 않은가?<br>
 그래서 나는 가운데 middle만 사용하고 나머지는 <span class="color--red">가상 선택자(pseudo class)</span>로 만들기로 하였다.
 
-<p class="codepen" data-height="410" data-theme-id="0" data-default-tab="css,result" data-user="yohanpro" data-slug-hash="pMxdgW" style="height: 410px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 0 auto; padding: 1em;" data-pen-title="pMxdgW">
-  <span>See the Pen <a href="https://codepen.io/yohanpro/pen/pMxdgW/">
-  pMxdgW</a> by Yohan Kim (<a href="https://codepen.io/yohanpro">@yohanpro</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+https://codepen.io/yohanpro/pen/pMxdgW/
 
 이제 세 개의 선을 긋는데는 성공했다. <br>
 이제 Javascript를 이용하여 클릭할 시에 X로 변하도록 만들어 주면 된다.<br>
@@ -212,9 +207,4 @@ this.hamburgerIcon.addEventListener("click", this.toggleTheMenu.bind(this));
 
 짜잔 완성되었다!!
 
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="yohanpro" data-slug-hash="mNzVYG" style="height: 400px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 0 auto; padding: 1em; " data-pen-title="mNzVYG">
-  <span>See the Pen <a href="https://codepen.io/yohanpro/pen/mNzVYG/">
-  mNzVYG</a> by Yohan Kim (<a href="https://codepen.io/yohanpro">@yohanpro</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+https://codepen.io/yohanpro/pen/mNzVYG
