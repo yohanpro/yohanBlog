@@ -28,9 +28,7 @@ const myName = {
 };
 
 function greeting(age) {
-  return `Hello my name is ${
-    this.name
-  } i am ${age} years old. Nice to meet you.`;
+  return `Hello my name is ${this.name} i am ${age} years old. Nice to meet you.`;
 }
 greeting(); //이 상태에서는 Hello undefined, Nice to meet you.
 greeting.call(myName, 28); //Hello my name is Yohan i am 28 years old. Nice to meet you.
@@ -42,7 +40,7 @@ greeting.apply(myName, [28]); //Hello my name is Yohan i am 28 years old. Nice t
 ###bind 예제
 
 <div style="background: rgba(102,153,255,0.2); width:fit-content; padding:5px 10px;text-align:left; font-weight:bold; font-size:1.3em; margin-bottom:1em;" >
-function.<span <></>class="color--red">bind</span>(thisArg[, arg1[, arg2[, ...]]])
+function.<span class="color--red">bind</span>(thisArg[, arg1[, arg2[, ...]]])
 </div>
 
 ```js
