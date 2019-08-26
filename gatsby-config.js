@@ -15,20 +15,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [
-          {
-            resolve: "@weknow/gatsby-remark-codepen",
-            options: {
-              theme: "dark",
-              height: 400
-            }
-          }
-        ]
-      }
-    },
-    {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content`,
@@ -122,6 +108,13 @@ module.exports = {
           {
             resolve: "gatsby-remark-responsive-iframe",
             options: { wrapperStyle: "margin-bottom: 1.0725rem" }
+          },
+          {
+            resolve: "@weknow/gatsby-remark-codepen",
+            options: {
+              theme: "dark",
+              height: 400
+            }
           },
           "gatsby-remark-autolink-headers",
           "gatsby-remark-prismjs",
