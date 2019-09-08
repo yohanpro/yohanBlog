@@ -67,3 +67,161 @@ function callback(result) {}
 나는 Clicstream을 사용해야하기 때문에 `Call_Clickstream_vod__c`를 사용해서 createRecord 하면 된다.
 <br>
 <img style="margin-top:1em; width:70%;" src="/media/images/veeva/SalesforceData.png" alt="이미지"/>
+
+즉 만약에 한 개의 ClickStream 오브젝트를 보내고 싶다면 다음과 같이 보내면 된다.
+
+```js
+let clickStreamObj = {};
+clickStreamObj.Question_vod__c = "당신의 이름은 무엇인가요?";
+clickStreamObj.Track_Element_Description_vod__c = "이름 질문";
+clickStreamObj.Answer_vod__c = "김요한";
+clickStreamObj.Track_Element_Id_vod__c = 1;
+clickStreamObj.Usage_Start_Time_vod__c = new Date();
+
+com.veeva.clm.createRecord(
+  "Call_Clickstream_vod__c",
+  clickStreamObj
+  function(result) {
+    console.log(result);
+  }
+);
+```
+
+그런데 두 개 이상을 보내게 된다면 상당히 골치아플 것이다.<br>
+위와 같이 두 번 해주어야 하고, 세 개를 보낸다면 3개를 만들어주어야 한다. 이런 경우는 Class를 만들어서 인스턴스를 생성할 수 있게 만들어 주는 편이 좋겠다고 생각을 했다. <br>
+
+### ClickStream 클래스 작성
+
+ClickStream 클래스에는 데이터를 보내는 메소드, 생성 메소드가 들어가야 한다. <br>
+그리고 문제가 되는 것은 배열로 보낼 때 동기적으로 보내야 하므로 배열로 보낼 때는 따로 처리를 해주어야 한다고 생각했다.<small><s>사실 이게 맞는지는 잘 모르겠다.</s></small>
+
+그래서 생겨난 ClickStream Class는 다음과 같다.
+
+```js
+class SurveyClickStream {
+  /**
+   * @param {String} qusetionTitle clicksteam에 들어갈 question
+   * @param {String} description clicksteam에 들어갈 description
+   * @param {String} answer answer
+   * @param {String} id 고유값, update하기 위해 사용
+   * @param {String} type 문제의 유형 text, picklist...
+   * @param {String} action create or update
+   */
+  constructor(qusetionTitle, description, answer, id, action) {
+    this.clickStreamObject = {};
+    this.clickStreamObject.Question_vod__c = qusetionTitle; //서베이 질문
+    this.clickStreamObject.Track_Element_Description_vod__c = description;
+    this.clickStreamObject.Answer_vod__c = answer;
+    this.clickStreamObject.Track_Element_Id_vod__c = id; //updateRecord에서 처리할 id
+    this.clickStreamObject.Usage_Start_Time_vod__c = new Date();
+    this.action = action;
+  }
+```
+
+Constructor로 Title, description, answer, id, action을 넣어준다. <Br>
+여기서 id는 만약 동일한 세션 내에서 사용한다면 update를 할 수 있다. <br>
+아니면 Veeva API 중에 `queryRecord`라고 하는 Api가 있으므로 내가 보낸 call ClickStream을 받아올 수도 있다.
+
+```js
+  submitSurveyResult() {
+    return new Promise((res, rej) => {
+      let result = "";
+      if (this.isAnswerEmpty(this.clickStreamObject.Answer_vod__c)) {
+        result = "답변 없음";
+        return setTimeout(() => {}, 500); //만약 답변이 비어있다면 그대로 return 해준다.
+      }
+      if (!isVeevaEnvironment()) {
+        //개발환경이라면 여기서 내보내고 종료
+        console.log(this.clickStreamObject);
+        return res(result);
+      }
+      switch (this.action) {
+        case "create":
+          com.veeva.clm.createRecord(
+            "Call_Clickstream_vod__c",
+            this.clickStreamObject,
+            function(result) {
+              res(result);
+            }
+          );
+          break;
+        case "update":
+          com.veeva.clm.updateRecord(
+            "Call_Clickstream_vod__c",
+            this.clickStreamObject.Track_Element_Id_vod__c,
+            this.clickStreamObject,
+            function(result) {
+              res(result);
+            }
+          );
+        default:
+          result = "check your action ";
+          return rej(result);
+      }
+    });
+  }
+
+  isAnswerEmpty(value) {
+    return (
+      value === undefined ||
+      value === null ||
+      (typeof value === "object" && Object.keys(value).length === 0) ||
+      (typeof value === "string" && value.trim().length === 0)
+    );
+  }
+
+```
+
+보낸 action에 따라 update를 하거나 create를 할 지 결정해서 Promise를 리턴해준다.<br>
+그러나 내가 이 행동을 update 할 것인지, 혹은 create 할 것인지는 어떻게 결정할 것인가가 문제이다.<br>
+일단 지난번에 만든 프로젝트에서는 sessionStorage를 활용해 현재 열린 프레젠테이션에 한해서만 update를 해주게 만들었었다.<br>
+그러나 queryRecord API를 활용해 값이 있는지를 체크한 후 만드는 방법도 있을 것 같은데 이 부분은 좀 더 연구해 보아야 한다.
+
+```js
+const submitClickStream = async surveyArr => {
+  try {
+    for (let i = 0; i < surveyArr.length; i++) {
+      await surveyArr[i].submitSurveyResult();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+```
+
+ClickStream class에는 포함되어 있지는 않지만 만약에 배열로 보낸다면 이런 방식으로 데이터를 보내주어야 한다.<br>
+배열로 만들어서 한꺼번에 보내려고 한다면 값이 들어가지 않기 때문에 Async await로 만들어주었다.
+이제 인스턴스를 만들어서 활용하면 된다.
+
+```js
+const survey1 = new SurveyClickStream(
+  "안녕하세요?",
+  "인사",
+  "Hi!",
+  "survey1",
+  "text",
+  "create"
+);
+
+const survey2 = new SurveyClickStream(
+  "오늘 날씨는 어떻습니까?",
+  "오늘 날씨 질문",
+  "Very good",
+  "survey2",
+  "text",
+  "create"
+);
+const survey3 = new SurveyClickStream(
+  "Number 선택",
+  "Num",
+  "3",
+  "survey3",
+  "picklist",
+  "create"
+);
+const surveyArr = [survey1, survey2, survey3];
+
+const submit = () => {
+  submitClickStream(surveyArr);
+};
+```
