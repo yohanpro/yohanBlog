@@ -1,6 +1,6 @@
 ---
 title: Veeva ClickStream Class 만들기
-date: "2019-08-31"
+date: "2019-09-07"
 template: "post"
 draft: false
 slug: "/posts/js/Veeva_ClickStream"
