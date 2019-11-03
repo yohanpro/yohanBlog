@@ -1,49 +1,58 @@
 .noto {
-    font-family: "Noto Sans KR", sans-serif !important;
+  font-family: "Noto Sans KR", sans-serif !important;
 }
 
 .caption {
-    display: block;
-    text-align: center;
-    margin-top: 1rem;
-    font-weight: 100;
-    color: gray;
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 100;
+  color: gray;
 }
 
 .center {
-    display: block;
-    margin: auto;
+  display: block;
+  margin: auto;
 }
 
 .imgBorder--radius {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .color--red {
-    color: red;
-    font-weight: bold;
+  color: red;
+  font-weight: bold;
 }
 
-p>img {
-    width: 60%;
+p > img {
+  width: 60%;
 }
 
 .w80 {
-    width: 80% !important;
+  width: 80% !important;
 }
 
 .w90 {
-    width: 90% !important;
+  width: 90% !important;
 }
 
 .w70 {
-    width: 70% !important;
+  width: 70% !important;
 }
 
 .w50 {
-    width: 50% !important;
+  width: 50% !important;
 }
 
 em.text--red {
-    color: red;
+  color: red;
+}
+.showAnimation {
+  animation: show 1s ease-in;
+}
+
+@keyframes showAnimation {
+  from {
+    opacity: 0;
+  }
 }

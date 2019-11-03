@@ -3,25 +3,29 @@ title: "About me"
 template: "page"
 ---
 
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
 <style>
 .icon-container{
     width:90%;
-    height:300px;
+    height:auto;
     margin-top:50px;
     border-radius:10px;
+    position:relative;
 }
 .stack{
     width:100%;
     height:100px;
     display:flex;
     justify-content:flex-start;
+    align-items:baseline;
 }
 .stack>div{
     width:50px;
     height:50px;
     text-align:center;
     margin-left:20px;
+    animation:showAnimation 1s ease-in;
 }
 .stack >div>img{
     width:100%;
@@ -32,6 +36,9 @@ template: "page"
     margin:0;
     font-size:10px;
 }
+.s1{
+    animation-delay:.5s;
+}
 h2{
     font-family:"NanumSquareRound", sans-serif !important;
 }
@@ -41,24 +48,23 @@ h2{
 
 <!-- 경력. -->
 
-Web Front-end Developer
-Innoboost
+<p style="font-weight:600;">Web Front-end Developer</p><Br> 
+<span style="font-size:1.7em;font-family: 'Nanum Gothic', sans-serif; font-weight:bold;">Innoboost</span> <br>
+<h5 style="margin-top:8px;color:rgba(0,0,0,0.6); font-weight:300;">2018년 3월 ~ </h5>
 
-2018년 3월 ~ 현재
+<p>
 
-Html, CSS, JS를 이용하여 헬스케어의 웹콘텐츠를 만듭니다.
+<strong style="font-size:1.1em;">Role: </strong> Html, CSS, JS를 이용하여 헬스케어 분야의 의료용 웹콘텐츠를 만듭니다.
 
-<!-- <!이미지 첨부 콜캡> -->
+</p>
+<video autoplay loop style="display:block; width:80%;  height:auto;">
+  <!-- Specify video sources -->
+  <source src="/media/videos/cholecap.mov" type="video/webm">
 
-<!-- 좋아하는 일 -->
-
-글 쓰는 일, 지식을 남과 공유하기, 공부하기 등
-
-<!-- 관심있는 스택 -->
-
-<h2> 보유 기술</h2>
+</video>
 
 <div class="icon-container">
+    <h2> 보유 기술</h2>
     <div class="stack">
         <div>
             <img src="https://img.icons8.com/carbon-copy/100/000000/html.png" alt="html5">
@@ -70,29 +76,57 @@ Html, CSS, JS를 이용하여 헬스케어의 웹콘텐츠를 만듭니다.
         </div>
         <div>
             <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="javscipt">
-            <h5>JavsScript</h5>
+            <h5>JS(ES6)</h5>
         </div>
-            <div>
+        <div>
             <img src="https://img.icons8.com/officel/80/000000/react.png" alt="React.js">
             <h5>React.js</h5>
         </div>
-    </div>
-    <div class="stack">
         <div>
             <img src="https://img.icons8.com/color/48/000000/git.png" alt="git">
+            <h5>Git</h5>
+        </div>
+    </div>
+    <h2 style="margin:0 0 10px 0;"> DataBase</h2>
+    <div class="stack">
+        <div>
+            <img src="https://img.icons8.com/color/48/000000/mongodb.png">
+            <h5>MongoDB</h5>
         </div>
         <div>
+            <img src="https://img.icons8.com/color/48/000000/graphql.png">
+            <h5>GraphQl</h5>
+        </div>
+    </div>
+    <h2 style="margin:0;"> Server Side</h2>
+    <div class="stack">
+        <div>
+            <img src="https://img.icons8.com/color/48/000000/nodejs.png">
+            <h5>Node.js</h5>
+        </div>
+        <div>
+            <img style="padding-bottom:20px;" src="https://buttercms.com/static/images/tech_banners/ExpressJS.png" alt="expressJS">
+            <h5>Express.js</h5>
+        </div>
+        <div>
+            <img style="padding-bottom:10px;"src="https://seeklogo.com/images/N/next-js-logo-7929BCD36F-seeklogo.com.png" alt="nextJS">
+            <h5>Next.js</h5>
+        </div>
+    </div>
+    <h2 style="margin:0 0 10px 0;"> 플랫폼</h2>
+    <div class="stack">
+        <div>
             <img src="https://img.icons8.com/dusk/64/000000/salesforce.png" alt="Salesforce">
+            <h5>Salesforce</h5>
         </div>
         <div>
             <img src="https://img.icons8.com/color/64/000000/amazon-web-services.png" alt="AWS">
+            <h5>AWS</h5>
         </div>
     </div>
 </div>
-
 <!-- 취미/ -->
-
-## 그밖의 소소한 취미들
+<h2>그밖의 소소한 취미들 </h2>
 
 - 스쿠버다이빙 (PADI Advanced level)
 - 독서
