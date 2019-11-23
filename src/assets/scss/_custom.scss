@@ -2,6 +2,18 @@
   font-family: "Noto Sans KR", sans-serif !important;
 }
 
+.nanumGothic {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.nanumGothicCoding {
+  font-family: 'Nanum Gothic Coding', monospace;
+}
+
+.sourceSansPro {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 .caption {
   display: block;
   text-align: center;
@@ -24,7 +36,7 @@
   font-weight: bold;
 }
 
-p > img {
+p>img {
   width: 60%;
 }
 
@@ -47,6 +59,7 @@ p > img {
 em.text--red {
   color: red;
 }
+
 .showAnimation {
   animation: show 1s ease-in;
 }
