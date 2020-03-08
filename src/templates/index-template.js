@@ -7,11 +7,17 @@ import Feed from '../components/Feed';
 import Page from '../components/Page';
 import Pagination from '../components/Pagination';
 import { useSiteMetadata } from '../hooks';
-import type { PageContext, AllMarkdownRemark } from '../types';
+import { PageContext, AllMarkdownRemark } from '../types';
+import Search from '../components/Search/Search';
+
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+
 
 type Props = {
   data: AllMarkdownRemark,
-  pageContext: PageContext
+  pageContext: PageContext;
 };
 
 const IndexTemplate = ({ data, pageContext }: Props) => {
@@ -31,8 +37,10 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
 
   return (
     <Layout title={pageTitle} description={siteSubtitle}>
+
       <Sidebar isIndex />
       <Page>
+        <Search />
         <Feed edges={edges} />
         <Pagination
           prevPagePath={prevPagePath}

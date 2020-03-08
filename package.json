@@ -41,6 +41,7 @@
   ],
   "dependencies": {
     "@weknow/gatsby-remark-codepen": "^0.1.0",
+    "axios": "^0.19.2",
     "bluebird": "^3.5.5",
     "classnames": "^2.2.6",
     "codecov": "^3.5.0",
@@ -72,6 +73,7 @@
     "invariant": "^2.2.4",
     "katex": "^0.10.2",
     "lodash": "^4.17.11",
+    "mdbreact": "^4.11.1",
     "moment": "^2.24.0",
     "netlify-cms": "^2.9.3",
     "node-sass": "^4.12.0",

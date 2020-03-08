@@ -1,0 +1,46 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+
+
+
+.search{
+  width: 100%;
+  @include breakpoint-sm{
+    width: 85%;
+  }
+  
+  &-article{
+    width: initial;
+    height: 10%;
+    max-height: 300px;
+    font-size: 18px;
+  }
+  
+  & h2{
+    font-size: 1.1em;
+  }
+  & p{
+    font-size: 0.9em;
+  }
+  &-result-container{
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+    max-height: 20vh;
+    overflow: scroll;
+    background-color: #fff;
+  
+  }
+
+  &-title{
+    font-weight: bold;
+  }
+
+  &-date{
+    font-family: 'NanumSquareRound';
+    margin-top: 0;
+  }
+  &-description{
+    margin-bottom: 10px;
+  }
+}
