@@ -5,9 +5,8 @@
 
 .search{
   width: 100%;
-  @include breakpoint-sm{
-    width: 85%;
-  }
+  position: relative;
+
   
   &-article{
     width: initial;
@@ -18,18 +17,42 @@
 
   & h2{
     font-size: 1.1em;
+    @include breakpoint-xs{
+      font-size: 0.9rem;
+    }
   }
   & p{
     font-size: 0.9em;
+    @include breakpoint-xs{
+      font-size: 0.7rem;
+      margin-bottom: 0.3em;
+    }
   }
   &-result-container{
     position: absolute;
-    width: 100%;
+    width: 110%;
     height: fit-content;
     max-height: 20vh;
-    overflow: scroll;
+    overflow-y: scroll;
     background-color: #fff;
-  
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    @include breakpoint-xs{
+      max-width: 90vw;
+      width: 100%;
+    }
+
+    &::-webkit-scrollbar {
+      background-color: rgba(0, 0, 0, 0.04)
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+      background-color: rgb(233, 220, 220);
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color:transparent;
+    }
   }
 
   &-title{

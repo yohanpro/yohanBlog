@@ -3,7 +3,9 @@
  */
 
 @mixin breakpoint-xs {
-    @content;
+    @media screen and (max-width:640px) {
+        @content;
+    }
 }
 
 @mixin breakpoint-sm {
