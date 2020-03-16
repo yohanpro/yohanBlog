@@ -5,7 +5,11 @@
   max-width: $layout-post-single-width;
   padding: 0 15px;
   margin: 0 auto;
+  font-family: $nanum-font-family;
 
+  & h1{
+    font-weight: 400;
+  }
   &__title {
     font-size: $typographic-base-font-size * 2;
     max-width: $layout-post-width;
@@ -41,7 +45,7 @@
     }
 
     & a {
-      text-decoration: underline
+      // text-decoration: underline
     }
 
     & * {

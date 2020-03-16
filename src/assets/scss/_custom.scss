@@ -1,3 +1,6 @@
+body{
+  font-family: 'Nanum Gothic', sans-serif !important;
+}
 .noto {
   font-family: "Noto Sans KR", sans-serif !important;
 }
@@ -64,6 +67,11 @@ em.text--red {
   animation: show 1s ease-in;
 }
 
+
+// h1,h2,h3,h4{
+//   font-weight:500 !important ;
+//   margin-bottom: 0.4em;
+// }
 @keyframes showAnimation {
   from {
     opacity: 0;
