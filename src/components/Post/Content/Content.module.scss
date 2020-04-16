@@ -1,5 +1,5 @@
-@import '../../../assets/scss/variables';
-@import '../../../assets/scss/mixins';
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
 
 .content {
   max-width: $layout-post-single-width;
@@ -7,10 +7,13 @@
   margin: 0 auto;
   font-family: $nanum-font-family;
 
-  & h1{
+  & h1 {
     font-weight: 600;
     margin-bottom: 0.5em;
     font-size: 1.8em;
+  }
+  & h2 {
+    margin-bottom: 0.5em;
   }
   &__title {
     font-size: $typographic-base-font-size * 2;
@@ -21,7 +24,25 @@
     text-align: center;
     @include line-height(1.65);
     @include margin-top(1);
-    @include margin-bottom(0)
+    @include margin-bottom(0);
+  }
+  & p {
+    font-weight: 400;
+  }
+
+  ol {
+    list-style: none;
+    font-family: "Lato";
+    font-weight: 500;
+    counter-reset: my-awesome-counter;
+  }
+  ol li {
+    counter-increment: my-awesome-counter;
+  }
+  ol li::before {
+    content: counter(my-awesome-counter) ". ";
+    color: red;
+    font-weight: bold;
   }
 
   &__body {
@@ -39,11 +60,9 @@
           font-size: $typographic-base-font-size * 1.6817;
           margin-top: 0;
           @include margin-bottom(1);
-          @include line-height(1.5)
+          @include line-height(1.5);
         }
-
       }
-
     }
 
     & a {
@@ -53,15 +72,13 @@
     & * {
       max-width: $layout-post-width;
       margin-left: auto;
-      margin-right: auto
+      margin-right: auto;
     }
 
     & img {
       max-width: 100%;
     }
-
   }
-
 }
 
 @include breakpoint-md {
@@ -72,7 +89,7 @@
       font-size: $typographic-base-font-size * 2.5;
       @include line-height(2.25);
       @include margin-top(2.25);
-      @include margin-bottom(1.5)
+      @include margin-bottom(1.5);
     }
 
     &__body {
@@ -83,11 +100,8 @@
       & p {
         font-size: $typographic-base-font-size * 1.125;
         @include line-height(1.125);
-        @include margin-bottom(1.125)
+        @include margin-bottom(1.125);
       }
-
     }
-
   }
-
 }

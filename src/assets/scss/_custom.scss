@@ -1,20 +1,21 @@
-body{
-  font-family: 'Nanum Gothic', sans-serif !important;
+body {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 400;
 }
 .noto {
   font-family: "Noto Sans KR", sans-serif !important;
 }
 
 .nanumGothic {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
 }
 
 .nanumGothicCoding {
-  font-family: 'Nanum Gothic Coding', monospace;
+  font-family: "Nanum Gothic Coding", monospace;
 }
 
 .sourceSansPro {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .caption {
@@ -39,7 +40,7 @@ body{
   font-weight: bold;
 }
 
-p>img {
+p > img {
   width: 60%;
 }
 
@@ -66,7 +67,6 @@ em.text--red {
 .showAnimation {
   animation: show 1s ease-in;
 }
-
 
 // h1,h2,h3,h4{
 //   font-weight:500 !important ;
