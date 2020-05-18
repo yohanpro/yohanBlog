@@ -7,7 +7,7 @@ html {
 
 body {
   margin: 0;
-  font-family: $noto-font-family;
+  font-family: $nanum-font-family;
   color: $noto-base-font-color;
   line-height: $typographic-base-line-height;
   font-size: $noto-base-font-size;
@@ -40,35 +40,35 @@ h2 {
   font-size: $typographic-base-font-size * 1.6875;
   @include line-height(1.5);
   @include margin-top(2);
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 }
 
 h3 {
   font-size: $typographic-base-font-size * 1.375;
   @include line-height(1);
   @include margin-top(2);
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 }
 
 h4 {
   font-size: $typographic-base-font-size * 1.2;
   @include line-height(1);
   @include margin-top(1.5);
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 }
 
 h5 {
   font-size: $typographic-base-font-size;
   @include line-height(1);
   @include margin-top(2.5);
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 }
 
 h6 {
   font-size: $noto-base-font-size;
   @include line-height(1);
   @include margin-top(2.5);
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 }
 
 img {
@@ -88,7 +88,15 @@ hr {
   margin-right: auto;
   margin-left: auto;
   background-size: 100% 26px;
-  background-image: linear-gradient(to bottom, transparent 1px, transparent 11px, $color-base 11px, $color-base 15px, transparent 15px, transparent 26px);
+  background-image: linear-gradient(
+    to bottom,
+    transparent 1px,
+    transparent 11px,
+    $color-base 11px,
+    $color-base 15px,
+    transparent 15px,
+    transparent 26px
+  );
   width: 100px;
 }
 
@@ -101,7 +109,6 @@ a {
   &:active {
     color: $noto-link-s-font-color;
   }
-
 }
 
 b,
@@ -117,7 +124,6 @@ ul {
     padding: 0 5px;
     margin-bottom: 10px;
   }
-
 }
 
 p {
@@ -127,36 +133,36 @@ p {
 
 blockquote {
   font-size: 1.2em;
-  width:60%;
-  margin:50px auto;
-  font-family:Open Sans;
-  font-style:italic;
+  width: 60%;
+  margin: 50px auto;
+  font-family: Open Sans;
+  font-style: italic;
   color: #555555;
-  padding:1.2em 30px 1.2em 75px;
-  border-left:8px solid #78C0A8 ;
-  line-height:1.6;
+  padding: 1.2em 30px 1.2em 75px;
+  border-left: 8px solid #78c0a8;
+  line-height: 1.6;
   position: relative;
-  background:#EDEDED;
+  background: #ededed;
 }
-blockquote::before{
-  font-family:Arial;
+blockquote::before {
+  font-family: Arial;
   content: "\201C";
-  color:#78C0A8;
-  font-size:4em;
+  color: #78c0a8;
+  font-size: 4em;
   position: absolute;
   left: 10px;
-  top:-10px;
+  top: -10px;
 }
 
-blockquote::after{
-  content: '';
+blockquote::after {
+  content: "";
 }
-blockquote span{
-  display:block;
-  color:#333333;
+blockquote span {
+  display: block;
+  color: #333333;
   font-style: normal;
   font-weight: bold;
-  margin-top:1em;
+  margin-top: 1em;
 }
 figure {
   display: block;
@@ -165,8 +171,8 @@ figure {
 }
 
 figcaption {
-  @include line-height(.75);
-  @include margin-top(.25);
+  @include line-height(0.75);
+  @include margin-top(0.25);
   color: $color-base;
   font-size: $typographic-small-font-size;
   font-style: italic;
@@ -180,7 +186,6 @@ figcaption {
 }
 
 @include breakpoint-sm {
-
   figure.float-left,
   figure.float-right {
     max-width: 310px;
@@ -194,5 +199,4 @@ figcaption {
   .float-left {
     float: left;
   }
-
 }

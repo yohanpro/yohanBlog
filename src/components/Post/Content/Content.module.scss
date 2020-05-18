@@ -7,7 +7,7 @@
   margin: 0 auto;
   font-family: $nanum-font-family;
 
-  & h1 {
+  & > h1 {
     font-weight: 600;
     margin-bottom: 0.5em;
     font-size: 1.8em;
@@ -15,9 +15,15 @@
   & h2 {
     margin-bottom: 0.5em;
     font-weight: 600;
+    font-family: $nanum-font-family;
+  }
+  & h3 {
+    font-family: $nanum-font-family;
+    font-weight: 500;
   }
   &__title {
-    font-size: $typographic-base-font-size * 2;
+    font-family: $nanum-font-family;
+    font-size: $typographic-base-font-size * 2.4 !important;
     max-width: $layout-post-width;
     margin-left: auto;
     margin-right: auto;
