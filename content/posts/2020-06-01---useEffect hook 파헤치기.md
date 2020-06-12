@@ -119,3 +119,21 @@ function Counter() {
   );
 }
 ```
+
+나의 경우는 실제 프로젝트시에 이렇게 사용했다. 내가 만든 어떤 컴포넌트의 경우 이 컴포넌트를 벗어날 때 (즉 컴포넌트가 unmount될때 )
+리덕스 스토어에 dispatch를 해줘야하는 상황이었다.
+이런 경우에는 dispatch를 클린업 이벤트에 넣어주는 게 좋다.
+
+```js
+useEffect(() => {
+  //useEffect의 클린업 이벤트로 주게되면 unmount될 시에 실행된다.
+  return () => {
+    dispatch({
+      type: types.CHECK,
+      payload: {
+        checked: true,
+      },
+    });
+  };
+}, []);
+```
