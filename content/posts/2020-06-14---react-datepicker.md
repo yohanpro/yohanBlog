@@ -1,8 +1,8 @@
 ---
 title: react-datepicker 사용법
-date: "2020-06-01"
+date: "2020-06-27"
 template: "post"
-draft: true
+draft: false
 slug: "/posts/react/react-datepicker"
 category: "react"
 tags:
@@ -110,13 +110,87 @@ demo에 나와있는 것을 그대로 따라하면 오류가 난다. 그 이유�
 $ npm i -S date-fns
 ```
 
-그런 후에 필요한 라이브러리를 다음과 같이 import 해준다.
+그런 후에 필요한 라이브러리를 다음과 같이 import 해주어야 한다.
 
 ```js
 import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getMonth";
 ```
 
-## 날짜 scss 적용
+<Br/>
 
-## moment와 함께 사용하는 방법
+### 버튼을 눌러도 제대로 작동을 안 할때
+
+여기까지만 해도 잘 되는 사람이 있겠지만, 나의 경우는 달을 바꾸는 버튼이 제대로 작동하지 않았다.<br>
+분명 demo페이지에 나온 그대로 복붙해서 넣어도 안된다.
+
+해결방법은 button으로 되어 있는 것을 div로 바꾸어 주면 된다.
+
+### 최종 Datepicker jsx 코드와 렌더링 결과
+
+```jsx
+<DatePicker
+  withPortal
+  className="date date-record"
+  locale="ko"
+  selected={startDate}
+  minDate={minDate}
+  maxDate={maxDate}
+  dateFormat="yyyy.MM.dd(eee)"
+  useWeekdaysShort={true}
+  shouldCloseOnSelect={false}
+  useWeekdaysShort={true}
+  excludeDates={excludeDates}
+  ref={calendar}
+  onInputClick={() => openDatePicker()}
+  onChange={(date, event) => datePickHandler(date, event)}
+  renderCustomHeader={({
+    date,
+    prevMonthButtonDisabled,
+    nextMonthButtonDisabled,
+    decreaseMonth,
+    increaseMonth,
+  }) => (
+    <div
+      style={{
+        margin: 10,
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        className="btn_month btn_month-prev"
+        onClick={decreaseMonth}
+        disabled={prevMonthButtonDisabled}
+      >
+        <img src="/static/images/arrow-black-left.png" />
+      </div>
+      <div className="month-day">
+        {getYear(date)}.{months[getMonth(date)]}
+      </div>
+
+      <div
+        className="btn_month btn_month-next"
+        onClick={increaseMonth}
+        disabled={nextMonthButtonDisabled}
+      >
+        <img src="/static/images/arrow-black-right.png" />
+      </div>
+    </div>
+  )}
+>
+  <div className="button-container">
+    <div className="btn_ctrl btn_ctrl-cancel" onClick={cancelDatePicker}>
+      {" "}
+      취소
+    </div>
+    <div className="btn_ctrl btn_ctrl-confirm" onClick={closeDatePicker}>
+      선택
+    </div>
+  </div>
+</DatePicker>
+```
+
+<br>
+
+<img  style="width:30%; border-radius:10px;" src="https://yohanproblogasset.s3.ap-northeast-2.amazonaws.com/images/react/datepicker.png">
