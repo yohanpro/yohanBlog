@@ -61,10 +61,62 @@ export async function getStaticProps() {
 export default Blog;
 ```
 
+<br>
+
 ### getStaticProps를 써야할 때는 언제?
+
+Next.js 공식문서에는 아래와 같을 때 쓰라고 나와있다.
 
 - 유저가 request 하기에 앞서서 페이지를 렌더링 할때 필요한 데이터가 있을 때
 - 데이터가 headless CMS로부터 올때 (이건 무슨말인지 모르겠음)
 - 데이터가 공식적으로 캐싱될 수 있을 때 (특저 유저가 아닌)
 
-그러니까 쉽게 말해 그냥 거의 외부에서 API를 통해 데이터를 가져와 렌더링하는 모든 페이지는 쓰면 된다.
+그러니까 쉽게 말해 그냥 거의 외부에서 API를 통해 데이터를 가져와 렌더링하는 모든 페이지는 써도 무방한 듯하다.
+
+주의해야할 점은 client사이드에서 절대로 실행되지 않는다. bundle.js에도 없다!
+
+오히려 `getServerSideProps`을 써야할 때가 언제인지 아는게 좋다. 그 내용은 이어서 설명하겠다.
+
+<hr>
+
+## getServerSideProps
+
+`getServerSideProps`를 사용하는 방법은 동일히다. async로 export 해주게 되면 **매 requeset 때마다** 페이지에 있는 내용들을 pre-render해 줄것이다.
+
+```js
+export async function getServerSideProps(context) {
+  return {
+    props: {}, //페이지의 초기 prop값으로 전달됨.
+  };
+}
+```
+
+뭐 사용방법도 거의 완전 동일하다.
+
+```js
+function Page({ data }) {
+  // Render data...
+}
+
+// This gets called on every request
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://.../data`);
+  const data = await res.json();
+
+  // Pass data to the page via props
+  return { props: { data } };
+}
+
+export default Page;
+```
+
+클라이언트 사이드에서 실행되지 않는 것과 page에서만 사용할 수 있다는 내용 역시 동일하다.
+
+### 언제 써야하나?
+
+그러니까 페이지를 렌더링하기전에 꼭 fetch해야하는 데이터가 있을 경우 사용하라고 되어있다. 그리고 매 요청시마다 서버에서 계산해야 하므로 더 느릴 수 밖에 없다고 되어있다.
+
+그런데 아직 내 경험으로는 페이지를 렌더링하기 전에 꼭 받아와야하는 데이터가 뭐가 있는지 잘 모르겠다.
+
+## useSWR ㅎ
