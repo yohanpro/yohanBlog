@@ -1,8 +1,8 @@
 ---
 title: Next.js에서 data-fetching하기
-date: "2020-07-05"
+date: "2020-07-08"
 template: "post"
-draft: true
+draft: false
 slug: "/posts/nextjs/data-fetching"
 category: "react"
 tags:
@@ -119,12 +119,3 @@ export default Page;
 
 그런데 아직 내 경험으로는 페이지를 렌더링하기 전에 꼭 받아와야하는 데이터가 뭐가 있는지 잘 모르겠다.<br>
 과연 어떤 경우에는 꼭! serversideProps를 써야할까 감이 잘오지 않는다.
-
-## useSWR 이란?
-
-Next.js 팀은 SWR이란 훅을 만들어서 공개했는데, 이게 반응이 너무 좋다. 이 훅은 데이터를 가져오는데 사용한다.<br>
-swr은 데이터를 가져오는 것으로 특화되어 있는데, 이를 잘 활용하면 주기적으로 데이터를 동기화할 수도 있고, 캐시된 데이터를 이용할 수 있는 등의 장점이 있어 매우 어메이징하다.
-
-아래는 공식문서이다.
-
-이외의 사용방법을 example로 편하게 정리해놓은 [링크](https://github.com/vercel/swr/tree/master/examples)이다.
