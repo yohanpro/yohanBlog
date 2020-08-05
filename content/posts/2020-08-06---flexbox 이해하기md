@@ -1,0 +1,22 @@
+---
+title: Flexbox 완전정복
+date: "2020-08-06"
+template: "post"
+draft: true
+slug: "/posts/css/flexbox"
+category: "css"
+tags:
+  - "css"
+  - "flexbox"
+  - "flex-shrink"
+  - "align-contents"
+  - "algin-itmes"
+description: flexbox의 모든것
+---
+
+<style>
+.focus-red{
+  color:red;
+  font-weight:bold;
+}
+</style>
