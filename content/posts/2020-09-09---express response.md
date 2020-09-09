@@ -15,66 +15,20 @@ tags:
 description: express 응답방식 비교 send, json, end
 ---
 
-https://medium.com/gist-for-js/use-of-res-json-vs-res-send-vs-res-end-in-express-b50688c0cddf
-useSWR은 Next.js팀에서 만든 훅이다. 데이터를 get할 때 매우 유용하게 사용할 수 있다.
+express는 Nodejs를 쓰는 사람이라면 모두가 안다고 할 정도로 유명한 웹 프레임워크다.
 
-API에서 데이터를 가져오는 방법으로 유명한 것은 `axios`가 있다. 사실 axios는 거의 필수로 사용하고 있다고 해도 과언이 아니다.<br>
-하지만 useSWR은 axios뿐만 아니라 graphql, fetch 등 다양한 방법을 사용해서 데이터를 가져올 수 있다.
+express를 사용해서 response, request를 통해 주고 받고 하게 되는데 이 때 특히 response를 보내줄 때 헷갈리는 부분이 있다.
 
-## 특징
+바로 `res.json()`, `res.send()`, `res.end()` 이 세가지 인데, 어떤걸 써야 하는지 가끔 헷갈릴 때가 있고 무슨 차이가 있는지 잘 알지 못하고 있어 이번 기회에 정리하고자 한다.
 
-- 가볍고, 빠르다.
-- 빌트인 캐시, 요청 중복 제거
-- Typescript 지원
-- React Native 지원
-- interval을 주어 데이터 검증 가능
-- 포커싱 할때 revalidation
-- 에러가 발생했을 때 다시 시도
+Express 서버가 HTTP 요청을 받게되면, res를 반환하게 된다. 보통 이렇게들 쓴다.
 
-문서에 따르면 속도, 정확성, 안정성 등 모든 측면에서 좋다고 한다.
-
-## 사용법
-
-```jsx
-import React from "react";
-import useSWR from "swr";
-
-const apiEndpoint = "http://localhost:3001/api";
-
-const getData = async () => {
-  const response = await fetch(apiEndpoint);
-  return await response.json();
-};
-const App = () => {
-  const { data } = useSWR(apiEndpoint, getData);
-
-  return (
-    <div>
-      {myDatas && myDatas.map((data) => <div key={data.id}>{data.title}</div>)}
-    </div>
-  );
-};
-export default App;
+```js
+app.get("/api/login", (req, res) => {
+  // ... do something ...
+});
 ```
 
-<hr>
+이때 `res`는 NodeJs만의 업그레이드된 response object이다.
 
-## 실제 이용사례
-
-카카오톡 채널에서 채널관계를 추가했을 시에 callback이 없다. 이게 무슨 일? <br>채널관계를 추가하지 않았을 경우 팝업을 띄우는 처리를 했었는데,
-채널관계 추가해도 팝업을 사라지게 만들 방법이 없었다.
-
-useSWR을 사용하게 되면 포커싱 할때 다시 갱신하게 되므로, 웹소켓을 뚫거나 하지 않고 채널관계를 확인해서 팝업상태처리를 해줄 수 있었다.
-
-```jsx
-const fetcher = (url) => axios.get(url).then((response) => response.data);
-const { data: isChannelAdded } = useSWR(
-  `${process.env.BASE_URL}/auth/channel/status`,
-  fetcher,
-  {
-    revalidateOnFocus: true,
-  }
-);
-```
-
-<hr>
+## res.send()
