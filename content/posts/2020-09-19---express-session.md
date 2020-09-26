@@ -79,12 +79,111 @@ app.use(
 
 `app.use()`를 다른 미들웨어를 사용하기 전에 미리 선언해두어야 별 지장없이 사용할 수 있을것이다. 이로써 어떤 유저든 우리서버가 만든 웹사이트에 접근한다면 session을 생성하게 된다.
 
-## 로그인 구현해보기
+## 기본 로그인 구현해보기
 
-로그인 하는 과정은 아래와 같다.
+기본 express-generator로 기본 템플릿을 만들었다.
 
-1.  클라이언트에서 서버에 로그인 request을 한다.
-2.  적합한 유저라면 로그인을 하고 세션을 발급한다.
-3.  클라이언트에게 response를 해준다.
+```bash
+express --view=hbs mysessionApp
+```
 
-클라이언트가 해당 url에 접근하기만 해도 session이 이미 발급된 상황이다. 쿠키를 확인해보면 알 수 있다.
+그리고 여기에 필요한 모듈들을 설치해준다.
+
+```bash
+npm i mysql express-session express-mysql-session
+```
+
+그리고 위에서 말한 것처럼 기본 sql 설정을 해준다.<br>
+당연히 로컬에서 mysql을 사용하고 있어야 한다. 이 설정에 대해서는 굳이 설명을 하지 않겠다.
+
+```js
+const mysql = require("mysql");
+var session = require("express-session");
+var MySQLStore = require("express-mysql-session")(session);
+
+var indexRouter = require("./routes/index");
+var usersRouter = require("./routes/users");
+
+var app = express();
+
+var options = {
+  host: "localhost",
+  port: 3306,
+  user: "root",
+  password: "root",
+  database: "session_test",
+};
+
+var sessionStore = new MySQLStore(options);
+
+app.use(
+  session({
+    key: "session_cookie_name",
+    secret: "session_cookie_secret",
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+var connection = mysql.createConnection(options); // or mysql.createPool(options);
+var sessionStore = new MySQLStore({} /* session store options */, connection);
+```
+
+그리고 auth.js 라우팅을 설정해준다.
+
+```js
+// auth.js
+
+router.post("/login", function (req, res, next) {
+  const { id, password } = req.body;
+  console.log(req.body);
+  console.log("password", password);
+
+  if (id == "test" && password === "1234") {
+    req.session.authenticate = true;
+    res.status(200).send({ code: 1, msg: "its authenticated" });
+  } else {
+    res.status(200).send({ code: 2, msg: "다시 한번 확인해주세요" });
+  }
+});
+module.exports = router;
+```
+
+기본 `views` 폴더아래에 login.hbs를 만들어준다.
+
+```html
+// login.hbs
+<div>
+  <h2>This is login page</h2>
+
+  <form style="display: flex; flex-direction: column">
+    <label>아이디: <input type="text" id="id" /></label>
+    <label>패스워드: <input type="password" id="password" /></label>
+  </form>
+  <button onclick="login()">로그인</button>
+</div>
+
+<script>
+  function login(params) {
+    const id = document.querySelector("#id");
+    const password = document.querySelector("#password");
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === xhr.DONE) {
+        if (xhr.status === 200 || xhr.status === 201) {
+          console.log(xhr.responseText);
+        } else {
+          console.error(xhr.responseText);
+        }
+      }
+    };
+    xhr.open("POST", "http://localhost:3000/auth/login");
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(JSON.stringify({ id: id.value, password: password.value }));
+  }
+</script>
+```
+
+매우 간단한 포맷으로 기능이 우선이기에 스타일은 신경쓰지 않았다.
