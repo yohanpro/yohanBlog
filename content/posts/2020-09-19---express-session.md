@@ -2,7 +2,7 @@
 title: Express mysql session 사용해보기
 date: "2020-09-19"
 template: "post"
-draft: true
+draft: false
 slug: "/posts/nodejs/express-session"
 category: "nodejs"
 tags:
@@ -79,7 +79,7 @@ app.use(
 
 `app.use()`를 다른 미들웨어를 사용하기 전에 미리 선언해두어야 별 지장없이 사용할 수 있을것이다. 이로써 어떤 유저든 우리서버가 만든 웹사이트에 접근한다면 session을 생성하게 된다.
 
-## 기본 로그인 구현해보기
+## 기본 세션 로그인 구현해보기
 
 기본 express-generator로 기본 템플릿을 만들었다.
 
@@ -134,6 +134,12 @@ var sessionStore = new MySQLStore({} /* session store options */, connection);
 
 ```js
 // auth.js
+var express = require("express");
+var router = express.Router();
+
+router.get("/", function (req, res, next) {
+  res.render("login");
+});
 
 router.post("/login", function (req, res, next) {
   const { id, password } = req.body;
@@ -149,6 +155,11 @@ router.post("/login", function (req, res, next) {
 });
 module.exports = router;
 ```
+
+<li><span class="color--red">5번 라인: </span>  localhost:3000/auth로 들어오는 hbs 템플릿을 통해 렌더링을 해준다.</li>
+<li><span class="color--red">9번 라인: </span>  localhost:3000/auth/login으로 들어오는 post request를 처리해주는 부분이다.</li>
+
+<br>
 
 기본 `views` 폴더아래에 login.hbs를 만들어준다.
 
@@ -186,4 +197,33 @@ module.exports = router;
 </script>
 ```
 
-매우 간단한 포맷으로 기능이 우선이기에 스타일은 신경쓰지 않았다.
+이제 `localhost:3000/auth`로 들어가서 로그인을 시도해보자.
+
+<div>
+<img width="80%"src="https://yohanproblogasset.s3.ap-northeast-2.amazonaws.com/images/nodejs/200919/1.png">
+<div>
+<br>
+
+로그인이 성공했다면 아래와 같이 cookie탭에 쿠키가 암호화되어 저장된것을 볼수 있다. 제 3자가 탈취한다고 하더라도 암호화되어있기 때문에 어느정도 보안을 유지한다.
+
+마찬가지로 mysql 데이터베이스에 sessions table이 생성된것을 볼 수 있으며 여기서 정보를 볼 수 있다.
+
+<div>
+<img width="80%"src="https://yohanproblogasset.s3.ap-northeast-2.amazonaws.com/images/nodejs/200919/2.png">
+<div>
+<br>
+
+이제 쿠키가 발급되었으니 만약 쿠키에 authenticated가 있다면 바로 메인 페이지로 가게끔 설정할 수 있다.
+
+```js
+router.get("/", function (req, res, next) {
+  if (!req.session) return res.render("login");
+
+  if (req.session.authenticate) {
+    return res.render("main");
+  }
+});
+```
+
+<br>
+<hr>
