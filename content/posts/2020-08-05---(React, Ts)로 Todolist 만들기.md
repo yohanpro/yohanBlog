@@ -2,7 +2,7 @@
 title: React,Typescript로 Todolist 만들기 (들어가기 전에..)
 date: "2020-08-04"
 template: "post"
-draft: false
+draft: true
 slug: "/posts/react/todolist-1"
 category: "react"
 tags:
