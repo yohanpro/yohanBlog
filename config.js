@@ -10,8 +10,12 @@ module.exports = {
   googleAnalyticsId: 'UA-140132541-1',
   menu: [
     {
-      label: '블로그 포스팅',
+      label: '개발 블로그 포스팅',
       path: '/'
+    },
+    {
+      label: '일상 및 취미',
+      path: '/normal'
     },
     {
       label: 'About me',

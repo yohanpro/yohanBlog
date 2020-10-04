@@ -7,13 +7,13 @@ import styles from "./Layout.module.scss";
 type Props = {
   children: ReactNode,
   title: string,
-  description?: string
+  description?: string;
 };
 
 const Layout = ({ children, title, description }: Props) => (
   <div className={styles.layout}>
     <Helmet>
-      <html lang="en" />
+      <html lang="ko" />
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta property="og:site_name" content={title} />
