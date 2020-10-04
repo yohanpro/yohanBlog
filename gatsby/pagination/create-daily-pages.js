@@ -4,9 +4,9 @@ const path = require('path');
 const siteConfig = require('../../config.js');
 
 module.exports = async (graphql, actions) => {
-    const { createPage } = actions;
+  const { createPage } = actions;
 
-    const result = await graphql(`
+  const result = await graphql(`
     {
       allMarkdownRemark(
         filter: { frontmatter: { template: { eq: "daily" }, draft: { ne: true } } }
@@ -14,22 +14,22 @@ module.exports = async (graphql, actions) => {
     }
   `);
 
-    const { postsPerPage } = siteConfig;
-    const numPages = Math.ceil(result.data.allMarkdownRemark.totalCount / postsPerPage);
+  const { postsPerPage, dailyPostPerPage } = siteConfig;
+  const numPages = Math.ceil(result.data.allMarkdownRemark.totalCount / dailyPostPerPage);
 
-    for (let i = 0; i < numPages; i += 1) {
-        createPage({
-            path: i === 0 ? '/normal' : `/normal/page/${i}`,
-            component: path.resolve('./src/templates/daily-template.js'),
-            context: {
-                currentPage: i,
-                postsLimit: postsPerPage,
-                postsOffset: i * postsPerPage,
-                prevPagePath: i <= 1 ? '/' : `/page/${i - 1}`,
-                nextPagePath: `/page/${i + 1}`,
-                hasPrevPage: i !== 0,
-                hasNextPage: i !== numPages - 1
-            }
-        });
-    }
+  for (let i = 0; i < numPages; i += 1) {
+    createPage({
+      path: i === 0 ? '/normal' : `/normal/page/${i}`,
+      component: path.resolve('./src/templates/daily-template.js'),
+      context: {
+        currentPage: i,
+        postsLimit: dailyPostPerPage,
+        postsOffset: i * dailyPostPerPage,
+        prevPagePath: i <= 1 ? '/' : `/page/${i - 1}`,
+        nextPagePath: `/page/${i + 1}`,
+        hasPrevPage: i !== 0,
+        hasNextPage: i !== numPages - 1
+      }
+    });
+  }
 };

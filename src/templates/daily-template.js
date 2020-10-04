@@ -38,7 +38,7 @@ const dailyTemplate = ({ data, pageContext }) => {
       <Sidebar />
       <Page>
         <Search />
-        <Feed edges={edges} />
+        <Feed edges={edges} daily />
         <Pagination
           prevPagePath={prevPagePath}
           nextPagePath={nextPagePath}
@@ -69,6 +69,7 @@ export const query = graphql`
             date
             category
             description
+            cardimage
           }
         }
       }

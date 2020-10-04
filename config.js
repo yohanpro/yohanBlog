@@ -7,6 +7,7 @@ module.exports = {
   copyright: '© All rights reserved.',
   disqusShortname: 'www-yohanpro-com',
   postsPerPage: 5,
+  dailyPostPerPage: 3,
   googleAnalyticsId: 'UA-140132541-1',
   menu: [
     {
