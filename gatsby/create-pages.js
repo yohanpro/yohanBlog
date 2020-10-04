@@ -5,6 +5,7 @@ const _ = require('lodash');
 const createCategoriesPages = require('./pagination/create-categories-pages.js');
 const createTagsPages = require('./pagination/create-tags-pages.js');
 const createPostsPages = require('./pagination/create-posts-pages.js');
+const createDailyPages = require('./pagination/create-daily-pages.js');
 
 const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -26,6 +27,8 @@ const createPages = async ({ graphql, actions }) => {
     path: '/categories',
     component: path.resolve('./src/templates/categories-list-template.js')
   });
+
+
 
   // Posts and pages from markdown
   const result = await graphql(`
@@ -56,7 +59,7 @@ const createPages = async ({ graphql, actions }) => {
         component: path.resolve('./src/templates/page-template.js'),
         context: { slug: edge.node.fields.slug }
       });
-    } else if (_.get(edge, 'node.frontmatter.template') === 'post') {
+    } else if (_.get(edge, 'node.frontmatter.template') === 'post' || _.get(edge, 'node.frontmatter.template') === 'daily') {
       createPage({
         path: edge.node.fields.slug,
         component: path.resolve('./src/templates/post-template.js'),
@@ -68,6 +71,7 @@ const createPages = async ({ graphql, actions }) => {
   // Feeds
   await createTagsPages(graphql, actions);
   await createCategoriesPages(graphql, actions);
+  await createDailyPages(graphql, actions);
   await createPostsPages(graphql, actions);
 };
 

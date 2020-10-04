@@ -37,7 +37,6 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
 
   return (
     <Layout title={pageTitle} description={siteSubtitle}>
-
       <Sidebar isIndex />
       <Page>
         <Search />

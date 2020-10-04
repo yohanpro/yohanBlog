@@ -13,10 +13,10 @@ import Search from '../components/Search/Search';
 import 'mdbreact/dist/css/mdb.css';
 
 
-// type Props = {
-//   data: AllMarkdownRemark,
-//   pageContext: PageContext;
-// };
+type Props = {
+  data: AllMarkdownRemark,
+  pageContext: PageContext;
+};
 
 const dailyTemplate = ({ data, pageContext }) => {
   const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
@@ -35,7 +35,7 @@ const dailyTemplate = ({ data, pageContext }) => {
 
   return (
     <Layout title={pageTitle} description={siteSubtitle}>
-      <Sidebar isIndex />
+      <Sidebar />
       <Page>
         <Search />
         <Feed edges={edges} />
@@ -55,7 +55,7 @@ export const query = graphql`
     allMarkdownRemark(
         limit: $postsLimit,
         skip: $postsOffset,
-        filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } },
+        filter: { frontmatter: { template: { eq: "daily" }, draft: { ne: true } } },
         sort: { order: DESC, fields: [frontmatter___date] }
       ){
       edges {
