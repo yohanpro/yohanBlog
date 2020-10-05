@@ -31,7 +31,7 @@ const Feed = ({ edges, daily }: Props) => {
           </h2>
           {daily && (
             <div className={styles['feed__item-cardImage']}>
-              <img src={edge.node.frontmatter.cardimage} />
+              <Link to={edge.node.fields.slug}><img src={edge.node.frontmatter.cardimage} /></Link>
             </div>
           )}
           <p className={styles['feed__item-description']}>{edge.node.frontmatter.description}</p>
