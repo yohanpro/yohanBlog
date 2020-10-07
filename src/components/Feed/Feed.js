@@ -10,7 +10,6 @@ type Props = {
 };
 
 const Feed = ({ edges, daily }: Props) => {
-  console.log('daily', edges);
   return (
     <div className={styles['feed']}>
       {edges.map((edge) => (
