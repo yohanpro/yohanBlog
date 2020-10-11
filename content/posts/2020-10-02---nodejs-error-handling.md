@@ -2,7 +2,7 @@
 title: (NodeJS) Express 에러 핸들링하기
 date: "2020-10-10"
 template: "post"
-draft: true
+draft: false
 slug: "/posts/nodejs/error-handling"
 category: "typescript"
 tags:
@@ -13,20 +13,9 @@ tags:
 description: Express에서 에러 핸들링 하는 방법을 알아보자.
 ---
 
-nodejs 에러 핸들링 하는 방법이 궁금하다.
-
 에러가 발생할 경우 어떻게 공통로직으로 처리를 해주어야 하는가?
 
-에러가 발생하는 경우는 보통
-
-1. 서버에서 오류가 생겼다. (500)
-2. 클라이언트에서 잘못된 api를 요청(400)
-3. 서버 -> DB에서 작업하는 과정에서 오류 (500)
-
-내가 알고 싶은것
-서버에서 오류가 생겼을때 이를 프론트 에 보여주는 공통된 로직 만들기
-
-프론트 단에서 에러가 생겼을 경우?
+express를 이용하면 미들웨어를 `app.use()`를 사용하여 쉽게
 
 ## Error handling 미들웨어 선언하기
 
@@ -102,6 +91,13 @@ function wrapAsync(fn) {
 }
 ```
 
+헬퍼 함수로 wrapAsync를 커스텀으로 만들면 된다.
+한줄로 쓸 수도 있다.
+
+```js
+const wrapAsync = (fn) => (req, res, next) => fn(req, res, next).catch(next);
+```
+
 ```js
 app.get(
   "*",
@@ -120,7 +116,7 @@ app.listen(3000);
 
 function wrapAsync(fn) {
   return function (req, res, next) {
-    // 모든 오류를 .catch() 처리하고 체인의 next() 미들웨어에 전달하세요
+    // 모든 오류를 .catch() 처리하고 체인의 next() 미들웨어에 전달
     // (이 경우에는 오류 처리기)
     fn(req, res, next).catch(next);
   };
@@ -159,4 +155,4 @@ const doSelectQuery = (query, data = []) => {
 얼마 전 프로젝트에서 사용했던 방법이다.<br>
 DB에서 오류가 발생할 경우 방도가 없어 `if(err)`이 공통으로 들어가게끔 처리하곤 했는데 그럴 필요가 없는 것이다.
 
-이 방법을 미리 알았더라면 좋았을 것이다. 이래서 사람은 공부를 해야 한다.s
+이 방법을 미리 알았더라면 좋았을 것이다. 이래서 사람은 공부를 해야 한다.
