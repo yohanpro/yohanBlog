@@ -4,7 +4,7 @@ date: "2020-10-10"
 template: "post"
 draft: false
 slug: "/posts/nodejs/error-handling"
-category: "typescript"
+category: "nodejs"
 tags:
   - "error handling"
   - "nodejs에서 에러 핸들링하기"
@@ -15,7 +15,7 @@ description: Express에서 에러 핸들링 하는 방법을 알아보자.
 
 에러가 발생할 경우 어떻게 공통로직으로 처리를 해주어야 하는가?
 
-express를 이용하면 미들웨어를 `app.use()`를 사용하여 쉽게
+express를 이용하면 미들웨어를 `app.use()`를 사용하여 쉽게 등록할 수 있다. 이를 이용하면 에러를 처리하는 미들웨어도 쉽게 사용가능하다.
 
 ## Error handling 미들웨어 선언하기
 
