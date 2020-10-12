@@ -30,7 +30,7 @@ description: react-datepicker 사용법
 
 한글을 적용하는 것은 아래와 같이 하면 된다.
 
-```js
+```jsx
 import DatePicker, { registerLocale } from "react-datepicker";
 
 registerLocale("ko", ko);
@@ -54,7 +54,7 @@ moment를 다루는 것과 동일하다고 공식문서에는 되어 있는 것 
 dateFormat = "yyyy.MM.dd(eee)";
 ```
 
-eeee 하게되면 "수요일"까지 표시된다.
+eeee 하게되면 **"수요일"**까지 표시된다.
 
 ## 선택해도 사라지지 않게 만들기
 
@@ -65,7 +65,7 @@ eeee 하게되면 "수요일"까지 표시된다.
 고민 끝에 사용한 방법은 `useRef` 훅을 사용해서 calendar의 current 값을 가져온 후 `setOpen`을 설정하는 방법이었다.
 또한 current 프로퍼티를 변경한다고 해서 리렌더링을 발생시키지 않는다는 점도 마음에 든다.
 
-```js
+```jsx
 const [currentDate, setCurrentDate] = useState();
 const calendar = useRef(null);
 
@@ -124,7 +124,7 @@ import getMonth from "date-fns/getMonth";
 여기까지만 해도 잘 되는 사람이 있겠지만, 나의 경우는 달을 바꾸는 버튼이 제대로 작동하지 않았다.<br>
 분명 demo페이지에 나온 그대로 복붙해서 넣어도 안된다.
 
-해결방법은 button으로 되어 있는 것을 div로 바꾸어 주면 된다.
+<span style="font-size:1.1em; font-weight:bold;">해결방법은 button으로 되어 있는 것을 <span style="color:red;">div</span>로 바꾸어 주면 된다.</span>
 
 ### 최종 Datepicker jsx 코드와 렌더링 결과
 
