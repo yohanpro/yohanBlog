@@ -7,6 +7,12 @@
   margin: 0 auto;
   font-family: $nanum-font-family;
 
+  & ul > li {
+    color: orangered;
+    & > p {
+      margin-bottom: 1rem;
+    }
+  }
   & > h1 {
     font-weight: 600;
     margin-bottom: 0.5em;
