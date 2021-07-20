@@ -14,9 +14,13 @@ tags:
 description: express 응답방식 비교 send, json, end
 ---
 
+
+
 express는 Nodejs를 쓰는 사람이라면 모두가 안다고 할 정도로 유명한 웹 프레임워크다.
 
 express를 사용해서 response, request를 통해 주고 받고 하게 되는데 이 때 특히 response를 보내줄 때 헷갈리는 부분이 있다.
+
+이 부분에 대해 구글 엔지니어인 타마스 피로스의 [블로그 글](https://tpiros.dev/blog/res-json-vs-res-send-vs-res-end-in-express/)을 보고 참고하였다.
 
 바로 `res.json()`, `res.send()`, `res.end()` 이 세가지 인데, 어떤걸 써야 하는지 가끔 헷갈릴 때가 있고 무슨 차이가 있는지 잘 알지 못하고 있어 이번 기회에 정리하고자 한다.
 
@@ -38,7 +42,7 @@ app.get("/api/login", (req, res) => {
 
 > - `res.send()`는 send에 전해진 argument에 따라서 Content-type이 자동적으로 만들어진다. 이게 기본이다.<br>
 > - `res.json()`은 json이 아닌 것도 json 형식으로 바꾸어서 보내준다. 즉 content-type 헤더를 **application/JSON**으로 고정한다. 그런데 결국 res.json()도 마지막에 res.send()를 호출한다.<br>
-> - `res.send()`는 보내줄 아무 데이터도 없는데 response를 끝내고 싶을 때 사용한다.<br> ex) res.status(400).end();
+> - `res.end()`는 보내줄 아무 데이터도 없는데 response를 끝내고 싶을 때 사용한다.<br> ex) res.status(400).end();
 
   <br>
 
