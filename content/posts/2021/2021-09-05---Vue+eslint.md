@@ -1,5 +1,5 @@
 ---
-title: Vue에서는 eslint와 prettier를 동시에 사용하면 생기는 오류
+title: Vue에서 eslint와 prettier를 동시에 사용하면 생기는 오류
 date: "2021-09-05"
 template: "post"
 draft: false
@@ -18,15 +18,15 @@ description: Vue 프로젝트를 쓸때는 eslint만 사용하자..
 
 각설하고 Vue 코드를 작성할 때 자꾸 formmatting 문제가 나를 괴롭게 하는 것이었다.
 
-> **문제:** Nuxtjs+ eslint+ prettier를 create-nuxt-app으로 설치햇음에도 불구하고 인덴팅이 제대로 되지 않음
+> **문제:** Nuxtjs+ eslint+ prettier를 create-nuxt-app으로 설치했음에도 불구하고 인덴팅이 제대로 되지 않음
 
 <br>
   <p style="font-size: 1.8rem; font-weight:bold;">TL,DR;</p>
 <div style="background-color: rgba(0, 0, 0, 0.1); padding: 1rem; font-size: 1.2rem;">
     <ul>
       <li> 1. create-nuxt-app으로 설치시 eslint만 설치한다, .eslintrc에 있는 extends에 prettier를 제거한다.</li>
-      <li> 2. style tag 안에 있는 css들은 자동 formatting 문제는 해결 못했다. </li>
-      <li> 3. css들을 전부다 작성하고 난 뒤 shift+option+f로 포매팅한다.</li>
+      <li> 2. style tag 안에 있는 css들을 자동 formatting을 해주는 문제는 해결 못했다. </li>
+      <li> 3. css들을 전부 다 작성하고 난 뒤 shift+option+f로 포매팅한다.</li>
     </ul>
 </div>
 
@@ -72,6 +72,10 @@ eslint와 prettier가 충돌을 일으키기 때문인데 에디터의 default f
 
 이렇게 해놓고 linting 테스트를 하면 먹지 않는다. 난감 ;;;
 
+![screen 10.png](https://resonant-taurus-030.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6538464c-5ed3-4b04-8066-62af01430300%2Fscreen_10.png?table=block&id=07d03ae0-ece6-4423-ba4b-08c3ff29994d&spaceId=7187abd8-6d9c-48c2-99e3-1e28b84e3e26&width=1710&userId=&cache=v2)
+
+<br>
+
 여기서 nuxt.config.js에서 prettier를 적용하지 않기로 하면 문제가 해결된다.
 
 즉 아예 npx로 설치할때 prettier를 체크하지 않고 Eslint만 체크했으면 됬을텐데 두 개 다 사용해야 하는 줄 알고 삽질을 이렇게 했던 것이다.
@@ -88,9 +92,9 @@ eslint와 prettier가 충돌을 일으키기 때문인데 에디터의 default f
 
 그럼 style 태그 안에 있는 css들은 어떻게 formatting을 해주어야 하는가?
 
-결론부터 말하면 고치지 못했다. vue파일에 `defaultFormatter`를 `octref.vetur`로 주고 
+결론부터 말하면 고치지 못했다. vue파일에 `defaultFormatter`를 `octref.vetur`로 주고 shift+opition+f를 눌러서 포맷한다. 
 
-shift+opition+f를 눌러서 포맷한다. 이때 vetur에 맞게 js 파일들이 linting 될때도 있는데 어차피 다시 eslint fix 룰에 의해서 다시 원복된다.
+이때 vetur에 맞게 js 파일들이 linting 될때도 있는데 어차피 다시 eslint fix 룰에 의해서 다시 원복된다.
 
 ```json
  "[vue]": {
