@@ -16,7 +16,7 @@ description: 커스텀훅과 useReducer로 Form 만들기
 
 이런 Form을 작성하는 곳이 있다.
 
-![screen 2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18af6c42-f418-4449-aaa1-f3b22b17f9fe/screen_2.png)
+![screen 2.png](https://resonant-taurus-030.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F18af6c42-f418-4449-aaa1-f3b22b17f9fe%2Fscreen_2.png?table=block&id=f6660b6c-91de-4575-b6b8-73a70046df47&spaceId=7187abd8-6d9c-48c2-99e3-1e28b84e3e26&width=3740&userId=&cache=v2)
 
 이 코드는 이렇게 작성되어 있었다.
 
@@ -82,10 +82,10 @@ const formProps = {
       zipCode,
       selectedLang,
       setNationality,
-....
+.... 
     };
 
-    return <ChinaForm {...formProps} />;
+    return <Form {...formProps} />;
 ```
 
 타입스크립트를 쓴다면 여기다가 Prop타입들을 지정해줘야 하므로 문제가 점점 늘어난다.
