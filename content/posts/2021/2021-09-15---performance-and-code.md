@@ -10,7 +10,7 @@ tags:
   - "성능"
   - "성능은 얼마나 중요한가"
   - "lighthouse"
-description: 커스텀훅과 useReducer로 Form 만들기
+description: 내가 생각하는 성능의 우선순위
 ---
 
 성능이 그렇게 중요한가? 요즘 드는 생각이다. 도발적인 질문일수도 있겠다.
