@@ -35,7 +35,7 @@ description: 내가 생각하는 성능의 우선순위
 
 성능은 가로축을 성능. 세로축을 유저가 느끼는 만족감이라고 봤을때 성능이 일정지점 이하에서는 유저의 효용이 많이 감소하지만, 그 지점을 넘어가게 되면 만족감은 거의 높아지지 않는다. (내 개인적인 경험에 따른 뇌피셜. 반박금지)
 
-![screen 4.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2f324aaa-3dc4-45d3-b9ac-bd4eda3bd04d/screen_13.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210915%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210915T061538Z&X-Amz-Expires=86400&X-Amz-Signature=749852b8cadc3d98867ae75165df46b7800ab3643c9d202eb0e3d50b25457915&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22screen%252013.png%22)
+![screen 4.png](https://yohanproblogasset.s3.ap-northeast-2.amazonaws.com/images/css/screen+6.png)
 
 3초룰. 즉 어떤 사이트를 열었을때 3초 안에 화면이 나타나지 않으면 (렌더링) 유저의 이탈률이 급격히 높아지는 그 구간을 일정지점이라고 생각할 수 있겠다.
 
