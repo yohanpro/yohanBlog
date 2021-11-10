@@ -13,9 +13,9 @@ tags:
 description: 레거시 Nuxt 프로젝트에 Typescript를 입혀보자.
 ---
 Vue 예전 프로젝트를 다시 사용하게 되었다. 거의 비슷한 프로젝트라서 그대로 만들어진 Vue를 재활용하는게 좋다. 
-그런데 Typescript를 써서 디버깅 하기 쉽고, 개발단계에서 리팩토링하기도 쉬울수 있다. 
+그런데 이 프로젝트에 Typescript를 도입한다면 디버깅 하기 쉽고, 개발단계에서 리팩토링하기도 쉬울수 있다. 
 
-현재는  Nuxt 2.0.0 버전으로 만들어진 프로젝트인데 이게 오히려 순수 Vue로만 만들어졌다면 더 TS를 입히기 쉬웠을 것 같다. 
+현재는 Nuxt 2.0.0 버전으로 만들어진 프로젝트인데 이게 오히려 순수 Vue로만 만들어졌다면 더 TS를 입히기 쉬웠을 것 같다. 
 
 거두절미하고 어떻게 legacy Nuxt → ts Nuxt로 이주하게 되었는지 어떤 문제가 있었는지를 작성한다.
 우선 인프런의 캡틴판교 Typescript 강의를 많이 참고하였고 Nuxt이기 때문에 나와는 맞지 않는 부분들은 
@@ -27,9 +27,7 @@ Nuxt typescript에서 권장하는 방식을 최대한 사용하려고 하였다
 
 [Nuxt TypeScript](https://typescript.nuxtjs.org/)
 
-특히 Store에 있는 파일 추론하는 것까지만 완성하면 나머지는 이제 별 어려운 일이 없기 때문에 Store에 신경을 썼다.
-
-또한 Composition API를 적용해보면서 적절히 리팩토링해볼 생각이다.
+특히 Store에 있는 파일 추론하는 것까지만 완성하면 나머지는 이제 별 어려운 일이 없기 때문에 Store에 신경을 썼다. 또한 Vue3의 꽃인 Composition API를 적용해보면서 적절히 리팩토링해볼 생각이다.
 
 ## Class API 미사용
 
@@ -37,11 +35,11 @@ Nuxt typescript에서 권장하는 방식을 최대한 사용하려고 하였다
 
 [[Abandoned] Class API proposal by yyx990803 · Pull Request #17 · vuejs/rfcs](https://github.com/vuejs/rfcs/pull/17#issuecomment-494242121)
 
-그렇기 때문에 굳이 시간을 써서 class api를 배우려고 하지 않았다.  나와있는 내용들이 흥미롭다.
+그렇기 때문에 굳이 시간을 써서 class api를 배우려고 하지 않았다. 나와있는 내용들이 흥미롭다.
 
 - Class Api 역시도 목적인 typescript를 지원하는데 있어 완벽하지 못함
-- 내부구현을 복잡하게 만든다. (Generic을 사용하거나, this.$props에 데코레이터로 선언된 props 유형을 확인할 수 없다.  )
-- 로직 구성을 개선하지 않는다. Class Api의 데코레이터는 2-stage
+- 내부구현을 복잡하게 만든다. 
+- 로직 구성을 개선하지 않는다.(Generic에 들어가는 인자에 대한 런타임 추론이 역시 계속 필요한데, 이를 구현하기 위해서 중복된 코드가 불필요하게 들어가는 문제)
 
 이 내용과 관련해서도 깊이 알아보면 재밌을 것 같다. 
 
