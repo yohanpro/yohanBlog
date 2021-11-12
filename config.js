@@ -12,16 +12,8 @@ module.exports = {
   menu: [
     {
       label: '개발 블로그 포스팅',
-      path: '/'
+      path: '/',
     },
-    {
-      label: '일상 및 취미',
-      path: '/normal'
-    },
-    {
-      label: 'About me',
-      path: '/pages/about'
-    }
   ],
   author: {
     name: 'Yohan Kim',
@@ -29,8 +21,7 @@ module.exports = {
     bio: 'Web Developer 웹개발자 김요한입니다.',
     contacts: {
       email: '#yohan@yohanpro.com',
-      github: '#https://github.com/yohanpro',
-      instagram: '#https://www.naver.com'
-    }
-  }
+      github: 'yohanpro',
+    },
+  },
 };
