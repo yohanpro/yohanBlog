@@ -14,6 +14,10 @@ module.exports = {
       label: '개발 블로그 포스팅',
       path: '/',
     },
+    {
+      label: '나의 이력 💻',
+      path: 'https://www.notion.so/6f2eda0f8f0842dba4f10e9f9280367e',
+    },
   ],
   author: {
     name: 'Yohan Kim',
