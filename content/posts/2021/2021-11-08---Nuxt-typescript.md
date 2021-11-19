@@ -1,5 +1,5 @@
 ---
-title: Nuxt 레거시 프로젝트 Typescript 입히기
+title: Nuxt 프로젝트 Typescript 입히기
 date: "2021-11-08"
 template: "post"
 draft: false
@@ -10,7 +10,7 @@ tags:
   - "Vue"
   - "Typescript"
   - "Nuxt+Ts"
-description: 레거시 Nuxt 프로젝트에 Typescript를 입혀보자.
+description: Nuxt 프로젝트에 Typescript를 입혀보자.
 ---
 Vue 예전 프로젝트를 다시 사용하게 되었다. 거의 비슷한 프로젝트라서 그대로 만들어진 Vue를 재활용하는게 좋다. 
 그런데 이 프로젝트에 Typescript를 도입한다면 디버깅 하기 쉽고, 개발단계에서 리팩토링하기도 쉬울수 있다. 
