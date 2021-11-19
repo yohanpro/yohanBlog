@@ -1,5 +1,5 @@
 ---
-title: Nuxt 레거시 프로젝트 Typescript 입히기 - vuex와 store 적용
+title: Nuxt 프로젝트 Typescript 입히기 - vuex와 store 적용
 date: "2021-11-18"
 template: "post"
 draft: false
@@ -13,7 +13,7 @@ tags:
   - "typed-vuex"
   - "vuex"
   - "store"
-description: 레거시 Nuxt 프로젝트에 Typescript에 Vuex, Store 적용하기 (with typed Vuex)
+description: Nuxt 프로젝트에 Typescript에 Vuex, Store 적용하기 (with typed Vuex)
 ---
 [Introduction](https://typed-vuex.roe.dev/accessor/.accessor-introduction)
 
@@ -82,6 +82,7 @@ export default async ({ redirect, app: { $accessor } }: Context) => {
   }
 }
 ```
+<br>
 
 ## 분리되어 있을때 처리문제🤔
 
@@ -209,7 +210,9 @@ Vanila로 사용하는 방법에 대한 예제는 [여기](https://typed-vuex.ro
 import { Store, ActionContext } from 'vuex/types'
 ```
 
-이걸 잘못하여 Store를 vuex에서 가져오거나 `ActionContext`를 'typed-vuex'에서 가져오면 오류가 발생한다.
+이걸 잘못하여 Store를 vuex에서 가져오거나 `ActionContext`를 'typed-vuex'에서 가져오면 오류가 발생한다. 
+
+
 
 - RootState를 `store/index.ts`에 정의해주기
 
@@ -233,6 +236,24 @@ export const accessorType = getAccessorType({
   },
 })
 ```
+<br/>
+
+`RootState`를 가져와서 actions를 다시 작성해보자.
+
+```typescript
+import { Store, ActionContext } from 'vuex/types'
+
+export default {
+  async fetchCountries (
+      this: Store<RootState>,
+      { state, commit }: ActionContext<CommonState, RootState>,
+    ) {
+     console.log('fetch countries')
+  },
+}
+
+```
+
 
 이제 나머지는 시도 2와 마찬가지로 각각의 action들을 `index.ts`에 import를 해주면 된다.
 

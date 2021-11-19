@@ -11,3 +11,5 @@ gatsby-starter-lumen.iml
 public/
 
 .vscode/
+# Local Netlify folder
+.netlify
