@@ -76,7 +76,7 @@
     "lodash": "^4.17.11",
     "mdbreact": "^4.11.1",
     "moment": "^2.24.0",
-    "netlify-cms": "^2.9.3",
+    "netlify-cms": "^2.10.180",
     "node-sass": "^4.12.0",
     "normalize-scss": "^7.0.1",
     "prismjs": "^1.16.0",
