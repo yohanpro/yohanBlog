@@ -9,3 +9,5 @@ npm-debug.log
 gatsby-starter-lumen.iml
 
 public/
+
+.vscode/
