@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import styles from './Menu.module.scss';
-import Search from '../../Search/Search';
+
 
 type Props = {
   menu: {
