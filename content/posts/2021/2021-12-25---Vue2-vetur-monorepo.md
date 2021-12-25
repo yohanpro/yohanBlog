@@ -15,8 +15,6 @@ description: Vue2와 Typescript, Vetur monorepo 적용
 ---
 
 Vetur에서 `tsconfig설정` 같은게 잘 먹지 않는데. 이를 해결하는게 굉장히 필요하다. 
-
-Vue2를 쓰고 있다면 `Vetur`를 사용해야하고 Vue3를 사용한다면 Vue에서 공식 제공하는 `Volar`를 쓰는걸 추천하고 있다.<br/>
 확장라이브러리의 경우 Vue2를 쓰고 있다면 `Vetur`를 사용해야하고 Vue3를 사용한다면 Vue에서 공식 제공하는 `Volar`를 써야한다.
 
 #### 현 시점(2021. 12월) Vue에서 아쉬운 점
@@ -58,7 +56,7 @@ Vue2를 쓰고 있다면 `Vetur`를 사용해야하고 Vue3를 사용한다면 V
 - 루트에 있는 `tsconifg.json`를 extends로 가져오고 싶은데 가져올수가 없다.
 - path alias를 사용해서 컨트롤하고 싶은데 이게 제대로 가져오지 못한다.
 
-[vetur.config.js | Vetur](https://vuejs.github.io/vetur/reference/#example)
+더 자세한 내용은 여기를 참고하자. 👉🏻[vetur.config.js | Vetur](https://vuejs.github.io/vetur/reference/#example)
 
 일단 이 두 문제가 있는데 Vetur로 설정을 하려면 루트에 tsconfig나 jsconfig파일이 없어야 한다는 전제가 있다. 
 
@@ -157,6 +155,9 @@ projects: [
 <br>
 
  ### path alias 사용
+
+ 이제 이 설정해준것을 사용할 수 있는데 가끔가다가 추론을 못하거나, 인식 불가능하다는 오류가 뜨는 경우가 있다.
+ 그럴경우에는 과감하게 vscode를 종료하고 다시 시작해주자.
  <br>
 
 ```typescript
@@ -175,3 +176,5 @@ export default Vue.extend({
     id: '',
 </script>
 ```
+
+이렇게 하면 일단 path alias를 잘 사용할 수 있다.
