@@ -5,7 +5,7 @@ module.exports = {
   title: 'Yohan\'s Developer Diary',
   subtitle: '웹 개발자 김요한입니다.',
   copyright: '© All rights reserved.',
-  disqusShortname: 'www-yohanpro-com',
+  disqusShortname: 'yohanpro-com',
   postsPerPage: 5,
   dailyPostPerPage: 3,
   googleAnalyticsId: 'UA-140132541-1',
