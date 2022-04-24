@@ -16,20 +16,24 @@
   & > h1 {
     font-weight: bold;
     margin-bottom: 0.5em;
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   & h2 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     margin-bottom: 0.5em;
     font-weight: bold;
     font-family: $nanum-font-family;
   }
   & h3 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-family: $nanum-font-family;
     font-weight: bold;
   }
   & h4 {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  & h5 {
     font-size: 1.2rem;
     font-weight: bold;
   }
