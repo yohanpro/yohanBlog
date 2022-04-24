@@ -14,23 +14,23 @@
   //   }
   // }
   & > h1 {
-    font-weight: 600;
+    font-weight: bold;
     margin-bottom: 0.5em;
-    font-size: 1.8em;
+    font-size: 1.8rem;
   }
   & h2 {
-    font-size: 1.6em;
+    font-size: 1.6rem;
     margin-bottom: 0.5em;
     font-weight: bold;
     font-family: $nanum-font-family;
   }
   & h3 {
-    font-size: 1.4em;
+    font-size: 1.4rem;
     font-family: $nanum-font-family;
     font-weight: bold;
   }
   & h4 {
-    font-size: 1.2em;
+    font-size: 1.2rem;
     font-weight: bold;
   }
   &__title {
