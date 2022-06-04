@@ -41,7 +41,7 @@
   ],
   "dependencies": {
     "@weknow/gatsby-remark-codepen": "^0.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "bluebird": "^3.5.5",
     "classnames": "^2.2.6",
     "codecov": "^3.5.0",
