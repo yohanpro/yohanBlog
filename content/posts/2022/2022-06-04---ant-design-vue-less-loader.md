@@ -2,7 +2,7 @@
 title: ant design vue customize less 오류 해결
 date: "2022-06-04"
 template: "post"
-draft: false
+draft: true
 slug: "/posts/vue/ant-design-less-오류-해결"
 category: "programming"
 tags:
