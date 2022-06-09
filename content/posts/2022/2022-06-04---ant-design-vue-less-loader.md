@@ -1,5 +1,6 @@
 ---
 title: ant design vue customize less-loader 오류 해결하기
+date: "2022-06-04"
 template: "post"
 draft: false
 slug: "/posts/vue/ant-design-less-오류-해결"
