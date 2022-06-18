@@ -38,7 +38,7 @@ No issues found.
 
 [Ant-design-vue](https://2x.antdv.com/docs/vue/customize-theme)에서 Not working?이라는 섹터로 가게 되면 아래와 같이 써있다.
 
-> `If you import styles from 'ant-design-vue/dist/antd.css', change it to ant-design-vue/dist/antd.less.`
+> If you import styles from 'ant-design-vue/dist/antd.css', change it to ant-design-vue/dist/antd.less.
 
 우선 less파일을 load하고 있지 않았기 때문에 less로 import 해준다.
 
