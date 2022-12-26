@@ -45,7 +45,7 @@
     "bluebird": "^3.5.5",
     "classnames": "^2.2.6",
     "codecov": "^3.5.0",
-    "gatsby": "^2.10.5",
+    "gatsby": "^5.3.3",
     "gatsby-link": "^2.2.0",
     "gatsby-plugin-catch-links": "^2.1.0",
     "gatsby-plugin-feed": "^2.3.1",
