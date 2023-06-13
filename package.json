@@ -50,7 +50,7 @@
     "gatsby-plugin-catch-links": "^2.1.0",
     "gatsby-plugin-feed": "^2.3.1",
     "gatsby-plugin-flow": "^1.1.0",
-    "gatsby-plugin-google-gtag": "^1.1.0",
+    "gatsby-plugin-google-gtag": "^1.2.1",
     "gatsby-plugin-manifest": "^2.2.0",
     "gatsby-plugin-netlify": "^2.1.0",
     "gatsby-plugin-netlify-cms": "^3.0.18",
