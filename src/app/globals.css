@@ -1,13 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --accent: #3b82f6;
-  --accent-hover: #60a5fa;
-  --muted: #737373;
-  --border: #262626;
-  --card: #141414;
+  --background: #f8f9fb;
+  --foreground: #0a0a0a;
+
+  /* 연파란색 기반 색상 체계 */
+  --accent: #3b82f6;           /* 파란색 */
+  --accent-hover: #60a5fa;     /* 연파란색 */
+  --accent-dark: #2563eb;      /* 진한 파란색 */
+  --accent-gradient-from: #60a5fa;  /* 연파란색 */
+  --accent-gradient-to: #3b82f6;    /* 파란색 */
+
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --card: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+
+  /* 애플 스타일 그림자 */
+  --shadow-sm: 0 2px 8px rgba(59, 130, 246, 0.08);
+  --shadow-md: 0 4px 16px rgba(59, 130, 246, 0.12);
+  --shadow-lg: 0 8px 32px rgba(59, 130, 246, 0.16);
 }
 
 @theme inline {
@@ -38,7 +50,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: white;
+  color: var(--background);
 }
 
 /* Custom scrollbar */
@@ -51,12 +63,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
+  background: var(--muted);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--muted);
+  background: var(--accent);
 }
 
 /* Terminal cursor blink animation */
@@ -69,17 +81,28 @@ body {
   animation: blink 1s infinite;
 }
 
-/* Gradient text */
+/* Gradient text - 파란색 그래디언트 */
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* 호버 시 발광 효과 */
+.glow-on-hover {
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3),
+              0 0 40px rgba(96, 165, 250, 0.15);
+}
+
 /* Glass effect */
 .glass {
-  background: rgba(20, 20, 20, 0.8);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }

@@ -1,13 +1,53 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { profile } from "@/data/portfolio";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { profile, achievements } from "@/data/portfolio";
+import { useEffect, useState, useRef } from "react";
+
+// Counter animation hook
+const useCountUp = (end: number, duration: number = 2000) => {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let startTime: number;
+    let animationFrame: number;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOutQuad = (t: number) => t * (2 - t);
+      setCount(Math.floor(easeOutQuad(progress) * end));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [end, duration, hasStarted]);
+
+  return { count, setHasStarted };
+};
 
 export default function Hero() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-blue-950/20" />
+    <section ref={containerRef} className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Background gradient with parallax */}
+      <motion.div
+        style={{ y, opacity }}
+        className="absolute inset-0 bg-linear-to-br from-background via-background to-blue-50"
+      />
 
       {/* Grid pattern */}
       <div
@@ -94,21 +134,37 @@ export default function Hero() {
           </div>
         </motion.div>
 
+        {/* Achievement metrics */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+        >
+          {achievements.map((achievement, index) => (
+            <AchievementCard
+              key={achievement.label}
+              achievement={achievement}
+              index={index}
+            />
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           className="flex flex-wrap gap-4"
         >
           <a
             href="#projects"
-            className="px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-lg transition-colors font-medium"
+            className="px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-lg transition-all font-medium glow-on-hover"
           >
             프로젝트 보기
           </a>
           <a
             href="#contact"
-            className="px-6 py-3 border border-border hover:border-accent text-foreground rounded-lg transition-colors font-medium"
+            className="px-6 py-3 border border-border hover:border-accent text-foreground rounded-lg transition-all font-medium hover:shadow-md hover:shadow-accent/20"
           >
             연락하기
           </a>
@@ -118,7 +174,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          transition={{ duration: 0.5, delay: 1.2 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
         >
           <motion.div
@@ -131,5 +187,45 @@ export default function Hero() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+// Achievement Card Component with counter animation
+function AchievementCard({
+  achievement,
+  index,
+}: {
+  achievement: { value: number; suffix: string; label: string };
+  index: number;
+}) {
+  const [isMounted, setIsMounted] = useState(false);
+  const { count, setHasStarted } = useCountUp(achievement.value);
+  const isDecimal = achievement.value % 1 !== 0;
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const displayValue = isMounted ? (isDecimal ? count / 10 : count) : achievement.value;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      onViewportEnter={() => {
+        if (isMounted) {
+          setHasStarted(true);
+        }
+      }}
+      className="glass rounded-lg p-6 text-center hover:border-accent/50 transition-all glow-on-hover"
+    >
+      <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
+        {displayValue}
+        <span className="text-accent">{achievement.suffix}</span>
+      </div>
+      <div className="text-sm text-muted">{achievement.label}</div>
+    </motion.div>
   );
 }

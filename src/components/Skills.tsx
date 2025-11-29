@@ -1,36 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { techStacks } from "@/data/portfolio";
 
-const skills = {
-  "Frontend Frameworks": [
-    { name: "React", icon: "⚛️" },
-    { name: "Vue.js", icon: "💚" },
-    { name: "Next.js", icon: "▲" },
+const skillsWithIcons = {
+  frontend: [
+    { name: "React", icon: "⚛️", level: "expert" },
+    { name: "Vue.js", icon: "💚", level: "expert" },
+    { name: "Next.js", icon: "▲", level: "advanced" },
+    { name: "TypeScript", icon: "📘", level: "expert" },
   ],
-  Languages: [
-    { name: "TypeScript", icon: "📘" },
-    { name: "JavaScript", icon: "📒" },
+  tools: [
+    { name: "Vite", icon: "⚡", level: "advanced" },
+    { name: "Webpack", icon: "📦", level: "advanced" },
+    { name: "Turborepo", icon: "🔷", level: "intermediate" },
+    { name: "Docker", icon: "🐳", level: "intermediate" },
   ],
-  "Build & Tools": [
-    { name: "Vite", icon: "⚡" },
-    { name: "Webpack", icon: "📦" },
-    { name: "Turborepo", icon: "🔷" },
+  testing: [
+    { name: "Playwright", icon: "🎭", level: "advanced" },
+    { name: "Jest", icon: "🃏", level: "intermediate" },
   ],
-  Testing: [
-    { name: "Playwright", icon: "🎭" },
-    { name: "Jest", icon: "🃏" },
+  etc: [
+    { name: "Git", icon: "🔀", level: "expert" },
+    { name: "CI/CD", icon: "🔄", level: "advanced" },
+    { name: "AWS", icon: "☁️", level: "intermediate" },
   ],
-  DevOps: [
-    { name: "Docker", icon: "🐳" },
-    { name: "GitLab CI/CD", icon: "🦊" },
-    { name: "AWS", icon: "☁️" },
-  ],
-  Architecture: [
-    { name: "Monorepo", icon: "🏗️" },
-    { name: "FSD Pattern", icon: "📐" },
-    { name: "Layered Architecture", icon: "📚" },
-  ],
+};
+
+const categoryLabels: Record<string, string> = {
+  frontend: "Frontend",
+  tools: "Build & Tools",
+  testing: "Testing",
+  etc: "DevOps & Others",
 };
 
 export default function Skills() {
@@ -45,41 +46,33 @@ export default function Skills() {
           className="mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-accent font-mono">03.</span> Skills & Tools
+            <span className="gradient-text font-mono">03.</span> Skills & Tools
           </h2>
-          <div className="h-px bg-gradient-to-r from-border to-transparent max-w-md" />
+          <div className="h-px bg-linear-to-r from-accent via-accent/50 to-transparent max-w-md" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {Object.entries(skills).map(([category, items], categoryIndex) => (
-            <motion.div
-              key={category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              className="bg-card border border-border rounded-lg p-6 hover:border-accent/50 transition-colors"
-            >
-              <h3 className="font-semibold text-lg mb-4 text-accent">
-                {category}
-              </h3>
-              <ul className="space-y-3">
-                {items.map((skill, i) => (
-                  <motion.li
-                    key={skill.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.2 + i * 0.05 }}
-                    className="flex items-center gap-3 text-muted hover:text-foreground transition-colors"
-                  >
-                    <span className="text-xl">{skill.icon}</span>
-                    <span>{skill.name}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+        <div className="grid md:grid-cols-2 gap-8">
+          {Object.entries(skillsWithIcons).map(
+            ([category, items], categoryIndex) => (
+              <motion.div
+                key={category}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+                className="glass rounded-lg p-6 hover:border-accent/50 transition-all glow-on-hover"
+              >
+                <h3 className="font-semibold text-lg mb-6 gradient-text">
+                  {categoryLabels[category] || category}
+                </h3>
+                <ul className="space-y-4">
+                  {items.map((skill, i) => (
+                    <SkillItem key={skill.name} skill={skill} index={i} />
+                  ))}
+                </ul>
+              </motion.div>
+            )
+          )}
         </div>
 
         {/* Terminal-style skill summary */}
@@ -87,10 +80,10 @@ export default function Skills() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-16"
         >
-          <div className="bg-card border border-border rounded-lg overflow-hidden max-w-2xl mx-auto">
+          <div className="glass rounded-lg overflow-hidden max-w-2xl mx-auto glow-on-hover">
             <div className="flex items-center gap-2 px-4 py-3 bg-border/30">
               <span className="w-3 h-3 rounded-full bg-red-500" />
               <span className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -131,5 +124,65 @@ export default function Skills() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+// Skill Item Component with level bar animation
+function SkillItem({
+  skill,
+  index,
+}: {
+  skill: { name: string; icon: string; level: string };
+  index: number;
+}) {
+  const levelMap: Record<string, number> = {
+    expert: 90,
+    advanced: 75,
+    intermediate: 60,
+  };
+  const level = levelMap[skill.level] || 50;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.05 }}
+      whileHover={{ x: 5 }}
+    >
+      <div className="flex items-center justify-between mb-2">
+        <span className="flex items-center gap-2">
+          <motion.span
+            whileHover={{
+              scale: 1.2,
+              rotate: [0, -10, 10, -10, 0],
+            }}
+            transition={{ duration: 0.5 }}
+            className="text-xl"
+          >
+            {skill.icon}
+          </motion.span>
+          <span className="text-foreground">{skill.name}</span>
+        </span>
+        <span className="text-xs text-muted font-mono uppercase">
+          {skill.level}
+        </span>
+      </div>
+
+      {/* Level bar */}
+      <div className="h-1.5 bg-border rounded-full overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: `${level}%` }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: index * 0.05, ease: "easeOut" }}
+          className="h-full"
+          style={{
+            background: "linear-gradient(to right, var(--accent-gradient-from), var(--accent-gradient-to))",
+            boxShadow: "0 1px 2px rgba(59, 130, 246, 0.3)",
+          }}
+        />
+      </div>
+    </motion.div>
   );
 }
